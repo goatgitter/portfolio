@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\csharp",
+    "\\csharp\\goatgitter",
+    "\\csharp\\goatgitter\\lib",
+    "\\csharp\\goatgitter\\lib\\lib"
   ],
+  "SelectedNode": "\\csharp\\goatgitter\\lib\\lib",
   "PreviewInSolutionExplorer": false
 }
