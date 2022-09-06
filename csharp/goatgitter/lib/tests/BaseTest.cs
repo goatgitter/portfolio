@@ -16,7 +16,7 @@ namespace goatgitter.lib.tests
 
         public TestClass testClassObj;
         public const int TEST_ID = 999;
-        public const string TEST_NAME = "Pippi Longstalking";
+        public const string TEST_NAME = "Pippi Longstocking";
 
         /// <inheritdoc/>
         [SetUp]
