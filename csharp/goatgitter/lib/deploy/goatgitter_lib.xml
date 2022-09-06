@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>goatgitter_lib</name>
+    </assembly>
+    <members>
+        <member name="T:goatgitter.lib.Base">
+            Base class from which other classes will inherit.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
+        <member name="M:goatgitter.lib.Base.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.Base.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.Base.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:goatgitter.lib.extensions.Ints">
+            Extension class for Ints.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
+        <member name="M:goatgitter.lib.extensions.Ints.IsPositive(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.extensions.Ints.ToString(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="T:goatgitter.lib.extensions.Objects">
+            Extension class for Objects.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
+        <member name="M:goatgitter.lib.extensions.Objects.SafeToString(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.extensions.Objects.SafeEquals(System.Object,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:goatgitter.lib.extensions.StringBuilders">
+            Extension class for StringBuilders.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
+        <member name="M:goatgitter.lib.extensions.StringBuilders.AppendIf(System.Text.StringBuilder,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.extensions.StringBuilders.AppendLineIf(System.Text.StringBuilder,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:goatgitter.lib.extensions.Strings">
+            Extension class for Strings.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
+        <member name="M:goatgitter.lib.extensions.Strings.WordCount(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.extensions.Strings.IsEmpty(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.extensions.Strings.IsNotEmpty(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:goatgitter.lib.FIO">
+            Utility class FIO gracefully handles Operating System File Operations.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
+        <member name="T:goatgitter.lib.tests.BaseTest.TestClass">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.BaseTest.SetupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.BaseTest.CleanupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.BaseTest.EqualsTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.BaseTest.ToStringTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.BaseTest.GetHashCodeTest">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>
