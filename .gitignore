@@ -3,3 +3,5 @@
 ################################################################################
 **/.vs
 /csharp/goatgitter/lib/.vs
+/csharp/goatgitter/lib/obj/Debug
+/csharp/goatgitter/lib/obj/Release
