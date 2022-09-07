@@ -13,6 +13,11 @@ namespace goatgitter.lib
      * */
     public class FIO
     {
+        private Logger logger;
 
+        public FIO()
+        {
+            logger = new Logger();
+        }
     }
 }

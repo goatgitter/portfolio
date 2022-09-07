@@ -2,13 +2,10 @@
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace goatgitter.lib.tests
-{/** 
+{
+    /** 
     * ObjectsTest class Tests the Objects extension class.
     * MIT License
     * Copyright (c) 2022 goatgitter

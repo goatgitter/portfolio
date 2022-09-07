@@ -82,6 +82,12 @@
             Copyright (c) 2022 goatgitter
             
         </member>
+        <member name="T:goatgitter.lib.Logger">
+            Utility class Logger handles exceptions gracefully.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
         <member name="T:goatgitter.lib.tests.BaseTest">
             BaseTest class Tests the Base class.
             MIT License
@@ -125,6 +131,21 @@
             <inheritdoc/>
         </member>
         <member name="M:goatgitter.lib.tests.IntsTest.ToSafeStringTest">
+            <inheritdoc/>
+        </member>
+        <member name="T:goatgitter.lib.tests.LoggerTest">
+            ObjectsTest class Tests the Objects extension class.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
+        <member name="M:goatgitter.lib.tests.LoggerTest.CleanupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.LoggerTest.ConstructorTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.LoggerTest.LogInfoTest">
             <inheritdoc/>
         </member>
         <member name="T:goatgitter.lib.tests.ObjectsTest">
