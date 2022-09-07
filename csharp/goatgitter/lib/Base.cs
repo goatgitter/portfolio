@@ -4,13 +4,11 @@ using System.Text;
 
 namespace goatgitter.lib
 {
-
     /** 
     * Base class from which other classes will inherit.
     * MIT License
     * Copyright (c) 2022 goatgitter
     * */
-
     public class Base
     {
         /// <inheritdoc/>
