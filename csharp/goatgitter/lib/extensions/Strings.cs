@@ -14,8 +14,13 @@ namespace goatgitter.lib.extensions
         /// <inheritdoc/>
         public static int WordCount(this string str)
         {
-            return str.Split(new char[] { ' ', '.', '?' },
+            int result = 0;
+            if (str.IsNotEmpty()) 
+            {
+                result = str.Split(new char[] { ' ', '.', '?' },
                              StringSplitOptions.RemoveEmptyEntries).Length;
+            }
+            return result;
         }
 
         /// <inheritdoc/>

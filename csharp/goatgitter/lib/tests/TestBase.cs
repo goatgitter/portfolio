@@ -12,5 +12,10 @@ namespace goatgitter.lib.tests
     {
         public const int TEST_ID = 999;
         public const string TEST_NAME = "Pippi Longstocking";
+        public const string TEST_ALL_SPACES_STR = "         ";
+        public const string TEST_LEADING_SPACES_STR = "         Longstocking";
+        public const string TEST_TRAILING_SPACES_STR = "Pippi         ";
+        public const string TEST_HAS_PERIODS_STR = "Pippi.Longstocking";
+        public const string TEST_HAS_QUESTIONS_STR = "Pippi?Longstocking";
     }
 }
