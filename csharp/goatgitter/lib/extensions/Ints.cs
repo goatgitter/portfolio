@@ -21,7 +21,7 @@ namespace goatgitter.lib.extensions
         }
 
         /// <inheritdoc/>
-        public static string ToString(this int num)
+        public static string ToSafeString(this int num)
         {
             string result = null;
             if (num.IsPositive())

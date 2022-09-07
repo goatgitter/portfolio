@@ -28,7 +28,7 @@
         <member name="M:goatgitter.lib.extensions.Ints.IsPositive(System.Int32)">
             <inheritdoc/>
         </member>
-        <member name="M:goatgitter.lib.extensions.Ints.ToString(System.Int32)">
+        <member name="M:goatgitter.lib.extensions.Ints.ToSafeString(System.Int32)">
             <inheritdoc/>
         </member>
         <member name="T:goatgitter.lib.extensions.Objects">
@@ -107,6 +107,24 @@
             <inheritdoc/>
         </member>
         <member name="M:goatgitter.lib.tests.BaseTest.CloneTest">
+            <inheritdoc/>
+        </member>
+        <member name="T:goatgitter.lib.tests.IntsTest">
+            ObjectsTest class Tests the Objects extension class.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
+        <member name="M:goatgitter.lib.tests.IntsTest.SetupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.IntsTest.CleanupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.IntsTest.IsPositiveTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.IntsTest.ToSafeStringTest">
             <inheritdoc/>
         </member>
         <member name="T:goatgitter.lib.tests.ObjectsTest">

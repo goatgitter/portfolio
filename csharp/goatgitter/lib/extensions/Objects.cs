@@ -22,7 +22,7 @@ namespace goatgitter.lib.extensions
                 {
                     // Cast object before calling toString to avoid error.
                     Int32 intObj = (Int32)obj;
-                    result = intObj.ToString();
+                    result = intObj.ToSafeString();
                 }
                 else
                 {
