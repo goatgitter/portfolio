@@ -18,15 +18,19 @@ namespace goatgitter.lib.extensions
         public static string SafeToString(this object obj)
         {
             string result = null;
-            if (obj != null)
+            // Is the object NOT empty?
+            if (obj.IsNotEmpty())
             {
+                // Is the object's type an int32?
                 if (typeof(Int32).IsInstanceOfType(obj))
                 {
+                    // Cast object before calling toString to avoid error.
                     Int32 intObj = (Int32)obj;
                     result = intObj.ToString();
                 }
                 else
                 {
+                    // Convert to string using type's toString method.
                     result = obj.ToString();
                 }
             }
@@ -34,13 +38,36 @@ namespace goatgitter.lib.extensions
         }
 
         /// <inheritdoc/>
+        public static bool IsEmpty(this object obj)
+        {
+            bool result = obj == null;
+            return result;
+        }
+
+        /// <inheritdoc/>
+        public static bool IsNotEmpty(this object obj)
+        {
+            bool result = obj != null;
+            return result;
+        }
+
+        /// <inheritdoc/>
         public static bool SafeEquals(this object obj, object other)
         {
             bool result = false;
-            if (obj != null)
+            // Are both objects empty?
+            if (obj.IsEmpty() && other.IsEmpty())
             {
+                // Yes, then they are equal.
+                result = true;
+            }
+            // Are both objects NOT empty?
+            else if (obj.IsNotEmpty() && other.IsNotEmpty())
+            {
+                // Are both objects the same type?
                 if (obj.GetType().Equals(other.GetType()))
                 {
+                    // Check equality using type's Equals method.
                     result = obj.Equals(other);
                 } 
             }

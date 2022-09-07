@@ -40,6 +40,12 @@
         <member name="M:goatgitter.lib.extensions.Objects.SafeToString(System.Object)">
             <inheritdoc/>
         </member>
+        <member name="M:goatgitter.lib.extensions.Objects.IsEmpty(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.extensions.Objects.IsNotEmpty(System.Object)">
+            <inheritdoc/>
+        </member>
         <member name="M:goatgitter.lib.extensions.Objects.SafeEquals(System.Object,System.Object)">
             <inheritdoc/>
         </member>
@@ -76,6 +82,12 @@
             Copyright (c) 2022 goatgitter
             
         </member>
+        <member name="T:goatgitter.lib.tests.BaseTest">
+            BaseTest class Tests the Base class.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
         <member name="T:goatgitter.lib.tests.BaseTest.TestClass">
             <inheritdoc/>
         </member>
@@ -93,6 +105,36 @@
         </member>
         <member name="M:goatgitter.lib.tests.BaseTest.GetHashCodeTest">
             <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.BaseTest.CloneTest">
+            <inheritdoc/>
+        </member>
+        <member name="T:goatgitter.lib.tests.ObjectsTest">
+            ObjectsTest class Tests the Objects extension class.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
+        <member name="M:goatgitter.lib.tests.ObjectsTest.SetupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.ObjectsTest.CleanupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.ObjectsTest.IsEmptyTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.ObjectsTest.IsNotEmptyTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.ObjectsTest.SafeEqualsTest">
+            <inheritdoc/>
+        </member>
+        <member name="T:goatgitter.lib.tests.TestBase">
+            TestBase class from which other Test classes will inherit.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
         </member>
     </members>
 </doc>

@@ -2,9 +2,13 @@
 
 namespace goatgitter.lib.tests
 {
+    /** 
+    * BaseTest class Tests the Base class.
+    * MIT License
+    * Copyright (c) 2022 goatgitter
+    * */
     [TestFixture]
-    /// <inheritdoc/>
-    public class BaseTest
+    public class BaseTest : TestBase
     {
         /// <inheritdoc/>
         public class TestClass: Base
@@ -15,8 +19,6 @@ namespace goatgitter.lib.tests
         }
 
         public TestClass testClassObj;
-        public const int TEST_ID = 999;
-        public const string TEST_NAME = "Pippi Longstocking";
 
         /// <inheritdoc/>
         [SetUp]
@@ -67,6 +69,15 @@ namespace goatgitter.lib.tests
             };
             int expected = other.GetHashCode();
             Assert.AreEqual(expected, testClassObj.GetHashCode());
+        }
+
+        /// <inheritdoc/>
+        [Test]
+        public void CloneTest()
+        {
+            TestClass clone = testClassObj.Clone<TestClass>();
+            Assert.AreEqual(testClassObj, clone);
+            Assert.AreEqual(testClassObj.GetHashCode(), clone.GetHashCode());
         }
     }
 }

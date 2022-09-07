@@ -64,6 +64,8 @@
     <Compile Include="FIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tests\BaseTest.cs" />
+    <Compile Include="tests\ObjectsTest.cs" />
+    <Compile Include="tests\TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\goatgitter.ico" />

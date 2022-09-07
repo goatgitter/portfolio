@@ -1,5 +1,6 @@
 ﻿using goatgitter.lib.extensions;
 using System;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace goatgitter.lib
@@ -55,6 +56,18 @@ namespace goatgitter.lib
             }
             Console.WriteLine(sb.ToString());
             return sb.ToString();
+        }
+
+        public T Clone<T>()
+        {
+            object clone = this.MemberwiseClone();
+            T result = (T)clone;
+            foreach (var prop in this.GetType().GetProperties())
+            {
+                object valObj = prop.GetValue(this, null);
+                prop.SetValue(result, valObj);
+            }
+            return result;
         }
     }
 }
