@@ -13,6 +13,7 @@ namespace goatgitter.lib.tests
     {
         private object testObj;
         private string testStr;
+        private int testNum;
 
         /// <inheritdoc/>
         [SetUp]
@@ -20,6 +21,7 @@ namespace goatgitter.lib.tests
         {
             testObj = new object();
             testStr = TEST_NAME.Clone().ToString();
+            testNum = TEST_ID;
         }
 
         /// <inheritdoc/>
@@ -28,6 +30,7 @@ namespace goatgitter.lib.tests
         {
             testObj = null;
             testStr = null;
+            testNum = 0;
         }
 
         /// <inheritdoc/>
@@ -46,6 +49,16 @@ namespace goatgitter.lib.tests
             Assert.IsTrue(testObj.IsNotEmpty());
             testObj = null;
             Assert.IsFalse(testObj.IsNotEmpty());
+        }
+
+        /// <inheritdoc/>
+        [Test]
+        public void SafeToStringTest()
+        {
+            testObj = testNum;
+            string result = testObj.SafeToString();
+            Assert.IsNotNull(result);
+            Assert.AreEqual(TEST_ID.ToString(), result);
         }
 
         /// <inheritdoc/>
@@ -73,8 +86,8 @@ namespace goatgitter.lib.tests
             Assert.IsFalse(str2.SafeEquals(str1));
 
             // If one object has a different type, they are NOT Equal.
-            str1 = TEST_ID.SafeToString();
-            int int1 = TEST_ID;
+            str1 = testNum.SafeToString();
+            int int1 = testNum;
             Assert.IsFalse(str1.SafeEquals(int1));
             Assert.IsFalse(int1.SafeEquals(str1));
         }

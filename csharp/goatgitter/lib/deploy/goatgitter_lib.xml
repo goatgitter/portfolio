@@ -127,6 +127,9 @@
         <member name="M:goatgitter.lib.tests.ObjectsTest.IsNotEmptyTest">
             <inheritdoc/>
         </member>
+        <member name="M:goatgitter.lib.tests.ObjectsTest.SafeToStringTest">
+            <inheritdoc/>
+        </member>
         <member name="M:goatgitter.lib.tests.ObjectsTest.SafeEqualsTest">
             <inheritdoc/>
         </member>
