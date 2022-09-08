@@ -1,9 +1,5 @@
 ﻿using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace goatgitter.lib.tests
 {
@@ -43,6 +39,7 @@ namespace goatgitter.lib.tests
             testObj = new Logger();
             Assert.IsNotNull(testObj);
             testObj.LogInfo(TEST_NAME);
+            testObj.Log.Error(TEST_NAME);
         }
     }
 }
