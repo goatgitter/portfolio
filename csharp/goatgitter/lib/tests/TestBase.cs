@@ -22,6 +22,9 @@ namespace goatgitter.lib.tests
         public const string TEST_EXCEPTION_SRC = "TestExceptionSource";
         public const string TEST_INNER_EXCEPTION_MSG = "TestInnerExceptionMessage";
         public const string TEST_INNER_EXCEPTION_SRC = "TestInnerExceptionSource";
+        public const string TEST_FILE_NAME_DNE = "dne.txt";
+        public const string TEST_FILE_NAME = "testFile.log";
+        public const string TEST_DIR_NAME = "testData";
 
         public void CreateTestInnerException()
         {

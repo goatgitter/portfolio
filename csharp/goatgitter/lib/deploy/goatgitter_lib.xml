@@ -167,6 +167,11 @@
             Tests the Constructor
             </summary>
         </member>
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeGetFilePathTest">
+            <summary>
+            Tests the Constructor
+            </summary>
+        </member>
         <member name="T:goatgitter.lib.tests.tools.LoggerTest">
              MIT License
              Copyright (c) 2022 goatgitter
@@ -342,6 +347,14 @@
             <param name="folder">The directory where the file resides.</param>
             <param name="fileName">The name of the file to retrieve.</param>
             <param name="createFolder">A boolean that specifies if the folder should automatically be created if it does not exist.</param>
+            <returns></returns>
+        </member>
+        <member name="M:goatgitter.lib.tools.Filer.SafeDeleteFolder(System.String,System.Boolean)">
+            <summary>
+            Safely gets a Path object for the params specified.
+            </summary>
+            <param name="folder">The directory where the file resides.</param>
+            <param name="emptyFolder">A boolean that specifies if the folder should automatically be emptied.</param>
             <returns></returns>
         </member>
         <member name="M:goatgitter.lib.tools.Filer.RetrieveFileForUpdate(System.String,System.String,System.Boolean)">

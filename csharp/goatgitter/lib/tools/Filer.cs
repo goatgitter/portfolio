@@ -52,6 +52,33 @@ namespace goatgitter.lib.tools
         }
 
         /// <summary>
+        /// Safely gets a Path object for the params specified.
+        /// </summary>
+        /// <param name="folder">The directory where the file resides.</param>
+        /// <param name="emptyFolder">A boolean that specifies if the folder should automatically be emptied.</param>
+        /// <returns></returns>
+        public bool SafeDeleteFolder(string folder, bool emptyFolder = true)
+        {
+            bool result = false;
+            if (folder.IsNotEmpty())
+            {
+                if (Directory.Exists(folder))
+                {
+                    try
+                    {
+                        Directory.Delete(folder, emptyFolder);
+                        result = true;
+                    }
+                    catch (Exception exception)
+                    {
+                        Notepad.LogExceptionFormat(ERR_DELETE_DIR, new object[] { folder, emptyFolder }, exception);
+                    }
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
         /// Opens a File for writing information.
         /// </summary>
         /// <param name="folder">The directory where the file resides.</param>

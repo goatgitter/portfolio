@@ -43,5 +43,48 @@ namespace goatgitter.lib.tests.tools
             Assert.AreEqual(testObj.GetType(), testObj.Notepad.LogType);
         }
 
+        /// <summary>
+        /// Tests the Constructor
+        /// </summary>
+        [Test]
+        public void SafeGetFilePathTest()
+        {
+            testObj = new Filer();
+            // Null Folder, null File, Do NOT Create folder
+            string result = testObj.SafeGetFilePath(null, null, false);
+            Assert.IsNull(result);
+
+            // Null Folder, null File, Do Create folder
+            result = testObj.SafeGetFilePath(null, null, true);
+            Assert.IsNull(result);
+
+            // Null Folder, NOT null File, Do NOT Create folder
+            result = testObj.SafeGetFilePath(null, TEST_FILE_NAME, false);
+            Assert.IsNull(result);
+
+            // Null Folder, NOT null File, Do Create folder
+            result = testObj.SafeGetFilePath(null, TEST_FILE_NAME, true);
+            Assert.IsNull(result);
+
+            // NOT Null Folder, null File, Do NOT Create folder
+            result = testObj.SafeGetFilePath(TEST_DIR_NAME, null, false);
+            Assert.IsNull(result);
+
+            // NOT Null Folder, null File, Do Create folder
+            result = testObj.SafeGetFilePath(TEST_DIR_NAME, null, true);
+            Assert.IsNull(result);
+
+            // NOT Null Folder, NOT null File, Do NOT Create folder
+            result = testObj.SafeGetFilePath(TEST_DIR_NAME, TEST_FILE_NAME, false);
+            Assert.IsNull(result);
+
+            // NOT Null Folder, NOT null File, Do Create folder
+            result = testObj.SafeGetFilePath(TEST_DIR_NAME, TEST_FILE_NAME, true);
+            Assert.IsNull(result);
+
+            bool deleteResult = testObj.SafeDeleteFolder(TEST_DIR_NAME);
+            Assert.IsTrue(deleteResult);
+        }
+
     }
 }
