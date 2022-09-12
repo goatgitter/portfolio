@@ -5,23 +5,28 @@ using goatgitter.lib.tools;
 namespace goatgitter.lib.tests.tools
 {
     /** 
-    * ObjectsTest class Tests the Objects extension class.
     * MIT License
     * Copyright (c) 2022 goatgitter
-    * */
+    * ClassName : LoggerTest
+    * Purpose : Tests the Logger Class.
+    **/
     [TestFixture]
     public class LoggerTest : TestBase
     {
         private Logger testObj;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Resets objects modified during the test execution.
+        /// </summary>
         [TearDown]
         public void CleanupTest()
         {
             testObj = null;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Tests the Constructor
+        /// </summary>
         [Test]
         public void ConstructorTest()
         {

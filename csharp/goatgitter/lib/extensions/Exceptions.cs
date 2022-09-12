@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 using static goatgitter.lib.Constants;
-using static goatgitter.lib.Base;
+using static goatgitter.lib.BaseWithLog;
 
 namespace goatgitter.lib.extensions
 {
@@ -30,7 +30,7 @@ namespace goatgitter.lib.extensions
             }
             catch(Exception inner)
             {
-                Notepad.LogException(ERR_PRINT_EXCEPTION, inner);
+                AppNotepad.LogException(ERR_PRINT_EXCEPTION, inner);
             }            
             return sb.ToString();
         }

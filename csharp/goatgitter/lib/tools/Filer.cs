@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using goatgitter.lib.extensions;
 using static goatgitter.lib.Constants;
@@ -10,7 +11,7 @@ namespace goatgitter.lib.tools
      * MIT License
      * Copyright (c) 2022 goatgitter
      * */
-    public class Filer : Base
+    public class Filer : BaseWithLog
     {
        
         /// <summary>
@@ -19,7 +20,7 @@ namespace goatgitter.lib.tools
         /// </summary>
         public Filer() : base()
         {
-           
+            
         }
 
         /// <summary>

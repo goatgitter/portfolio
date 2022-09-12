@@ -1,18 +1,17 @@
-﻿using goatgitter.lib.tools;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace goatgitter.lib.tests
 {
     /** 
-    * BaseTest class Tests the Base class.
+    * BaseWithLogTest class Tests the BaseWithLog class.
     * MIT License
     * Copyright (c) 2022 goatgitter
     * */
     [TestFixture]
-    public class BaseTest : TestBase
+    public class BaseWithLogTest : TestBase
     {
         /// <inheritdoc/>
-        public class TestClass: Base
+        public class TestClass : BaseWithLog
         {
             public int Id { get; set; }
             public string Name { get; set; }
@@ -48,8 +47,10 @@ namespace goatgitter.lib.tests
         public void ConstructorTest()
         {
             Assert.IsNotNull(testClassObj);
-            Assert.AreEqual(TEST_ID, testClassObj.Id);
-            Assert.AreEqual(TEST_NAME, testClassObj.Name);
+            Assert.IsNotNull(testClassObj.Notepad);
+            Assert.IsNotNull(testClassObj.Notepad.Log);
+            Assert.IsNotNull(testClassObj.Notepad.LogType);
+            Assert.AreEqual(testClassObj.GetType(), testClassObj.Notepad.LogType);
         }
 
         /// <inheritdoc/>
@@ -68,7 +69,9 @@ namespace goatgitter.lib.tests
         [Test]
         public void ToStringTest()
         {
-            string expected = "Prop: Id => " + TEST_ID + "\r\nProp: Name => " + TEST_NAME + "\r\n";
+            string expected = "Prop: Id => " + TEST_ID 
+                + "\r\nProp: Name => " + TEST_NAME 
+                + "\r\nProp: Notepad => Prop: Log => log4net.Core.LogImpl\r\nProp: LogType => goatgitter.lib.tests.BaseWithLogTest+TestClass\r\n\r\n";
             Assert.AreEqual(expected, testClassObj.ToString());
         }
 

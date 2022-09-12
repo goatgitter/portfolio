@@ -66,12 +66,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base.cs" />
+    <Compile Include="BaseWithLog.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="extensions\Exceptions.cs" />
     <Compile Include="extensions\Ints.cs" />
     <Compile Include="extensions\Objects.cs" />
     <Compile Include="extensions\StringBuilders.cs" />
     <Compile Include="extensions\Strings.cs" />
+    <Compile Include="tests\BaseWithLogTest.cs" />
+    <Compile Include="tests\tools\FilerTest.cs" />
     <Compile Include="tools\Filer.cs" />
     <Compile Include="tools\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

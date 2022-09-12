@@ -10,17 +10,6 @@
             Copyright (c) 2022 goatgitter
             
         </member>
-        <member name="P:goatgitter.lib.Base.Notepad">
-            <summary>
-            Notepad Property for logging purposes.
-            </summary>
-        </member>
-        <member name="M:goatgitter.lib.Base.#ctor">
-            <summary>
-            Constructor for Base Objects.
-            Automatically creates a Notepad for logging.
-            </summary>
-        </member>
         <member name="M:goatgitter.lib.Base.Equals(System.Object)">
             <inheritdoc/>
         </member>
@@ -29,6 +18,28 @@
         </member>
         <member name="M:goatgitter.lib.Base.ToString">
             <inheritdoc/>
+        </member>
+        <member name="T:goatgitter.lib.BaseWithLog">
+            Base class with Logging from which other classes will inherit.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
+        <member name="P:goatgitter.lib.BaseWithLog.AppNotepad">
+            <summary>
+            Static Application Notepad Property for logging purposes.
+            </summary>
+        </member>
+        <member name="P:goatgitter.lib.BaseWithLog.Notepad">
+            <summary>
+             Instance Notepad Property for logging purposes.
+            </summary>
+        </member>
+        <member name="M:goatgitter.lib.BaseWithLog.#ctor">
+            <summary>
+            Constructor for BaseWithLog Objects.
+            Automatically creates a Notepad for logging.
+            </summary>
         </member>
         <member name="T:goatgitter.lib.Constants">
             <summary>
@@ -105,67 +116,75 @@
         <member name="M:goatgitter.lib.extensions.Strings.IsNotEmpty(System.String)">
             <inheritdoc/>
         </member>
-        <member name="T:goatgitter.lib.tools.Filer">
-            Utility class Filer gracefully handles File Input and Output Operations.
+        <member name="T:goatgitter.lib.tests.BaseWithLogTest">
+            BaseWithLogTest class Tests the BaseWithLog class.
             MIT License
             Copyright (c) 2022 goatgitter
             
         </member>
-        <member name="M:goatgitter.lib.tools.Filer.#ctor">
+        <member name="T:goatgitter.lib.tests.BaseWithLogTest.TestClass">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.BaseWithLogTest.SetupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.BaseWithLogTest.CleanupTest">
             <summary>
-            Constructor for the Filer Class.
-            Filers come equiped with a Notepad to record details it might need later.
+            Resets objects modified during the test execution.
             </summary>
         </member>
-        <member name="M:goatgitter.lib.tools.Filer.SafeGetFilePath(System.String,System.String,System.Boolean)">
+        <member name="M:goatgitter.lib.tests.BaseWithLogTest.ConstructorTest">
             <summary>
-            Safely gets a Path object for the params specified.
+            Tests the Constructor
             </summary>
-            <param name="folder">The directory where the file resides.</param>
-            <param name="fileName">The name of the file to retrieve.</param>
-            <param name="createFolder">A boolean that specifies if the folder should automatically be created if it does not exist.</param>
-            <returns></returns>
         </member>
-        <member name="M:goatgitter.lib.tools.Filer.RetrieveFileForUpdate(System.String,System.String,System.Boolean)">
-            <summary>
-            Opens a File for writing information.
-            </summary>
-            <param name="folder">The directory where the file resides.</param>
-            <param name="fileName">The name of the file to retrieve for update.</param>
-            <param name="createFolder">A boolean that specifies if the folder should automatically be created if it does not exist.</param>
-            <returns>bool result</returns>
+        <member name="M:goatgitter.lib.tests.BaseWithLogTest.EqualsTest">
+            <inheritdoc/>
         </member>
-        <member name="T:goatgitter.lib.tools.Logger">
-            Utility class Logger handles exceptions gracefully.
-            MIT License
-            Copyright (c) 2022 goatgitter
+        <member name="M:goatgitter.lib.tests.BaseWithLogTest.ToStringTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.BaseWithLogTest.GetHashCodeTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.BaseWithLogTest.CloneTest">
+            <inheritdoc/>
+        </member>
+        <member name="T:goatgitter.lib.tests.tools.FilerTest">
+             MIT License
+             Copyright (c) 2022 goatgitter
+             ClassName : FilerTest
+             Purpose : Tests the Filer Class.
             
         </member>
-        <member name="P:goatgitter.lib.tools.Logger.Log">
-            <inheritdoc/>
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.CleanupTest">
+            <summary>
+            Resets objects modified during the test execution.
+            </summary>
         </member>
-        <member name="P:goatgitter.lib.tools.Logger.LogType">
-            <inheritdoc/>
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.ConstructorTest">
+            <summary>
+            Tests the Constructor
+            </summary>
         </member>
-        <member name="M:goatgitter.lib.tools.Logger.#ctor(System.Type)">
-            <inheritdoc/>
+        <member name="T:goatgitter.lib.tests.tools.LoggerTest">
+             MIT License
+             Copyright (c) 2022 goatgitter
+             ClassName : LoggerTest
+             Purpose : Tests the Logger Class.
+            
         </member>
-        <member name="M:goatgitter.lib.tools.Logger.#ctor">
-            <inheritdoc/>
+        <member name="M:goatgitter.lib.tests.tools.LoggerTest.CleanupTest">
+            <summary>
+            Resets objects modified during the test execution.
+            </summary>
         </member>
-        <member name="M:goatgitter.lib.tools.Logger.LogInfo(System.String)">
-            <inheritdoc/>
+        <member name="M:goatgitter.lib.tests.tools.LoggerTest.ConstructorTest">
+            <summary>
+            Tests the Constructor
+            </summary>
         </member>
-        <member name="M:goatgitter.lib.tools.Logger.LogError(System.String)">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tools.Logger.LogWarn(System.String)">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tools.Logger.LogException(System.String,System.Exception)">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tools.Logger.LogExceptionFormat(System.String,System.Object[],System.Exception)">
+        <member name="M:goatgitter.lib.tests.tools.LoggerTest.LogInfoTest">
             <inheritdoc/>
         </member>
         <member name="T:goatgitter.lib.tests.BaseTest">
@@ -181,7 +200,14 @@
             <inheritdoc/>
         </member>
         <member name="M:goatgitter.lib.tests.BaseTest.CleanupTest">
-            <inheritdoc/>
+            <summary>
+            Resets objects modified during the test execution.
+            </summary>
+        </member>
+        <member name="M:goatgitter.lib.tests.BaseTest.ConstructorTest">
+            <summary>
+            Tests the Constructor
+            </summary>
         </member>
         <member name="M:goatgitter.lib.tests.BaseTest.EqualsTest">
             <inheritdoc/>
@@ -291,26 +317,74 @@
         <member name="M:goatgitter.lib.tests.extensions.StringsTest.WordCountTest">
             <inheritdoc/>
         </member>
-        <member name="T:goatgitter.lib.tests.tools.LoggerTest">
-            ObjectsTest class Tests the Objects extension class.
-            MIT License
-            Copyright (c) 2022 goatgitter
-            
-        </member>
-        <member name="M:goatgitter.lib.tests.tools.LoggerTest.CleanupTest">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.tools.LoggerTest.ConstructorTest">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.tools.LoggerTest.LogInfoTest">
-            <inheritdoc/>
-        </member>
         <member name="T:goatgitter.lib.tests.TestBase">
             TestBase class from which other Test classes will inherit.
             MIT License
             Copyright (c) 2022 goatgitter
             
+        </member>
+        <member name="T:goatgitter.lib.tools.Filer">
+            Utility class Filer gracefully handles File Input and Output Operations.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
+        <member name="M:goatgitter.lib.tools.Filer.#ctor">
+            <summary>
+            Constructor for the Filer Class.
+            Filers come equiped with a Notepad to record details it might need later.
+            </summary>
+        </member>
+        <member name="M:goatgitter.lib.tools.Filer.SafeGetFilePath(System.String,System.String,System.Boolean)">
+            <summary>
+            Safely gets a Path object for the params specified.
+            </summary>
+            <param name="folder">The directory where the file resides.</param>
+            <param name="fileName">The name of the file to retrieve.</param>
+            <param name="createFolder">A boolean that specifies if the folder should automatically be created if it does not exist.</param>
+            <returns></returns>
+        </member>
+        <member name="M:goatgitter.lib.tools.Filer.RetrieveFileForUpdate(System.String,System.String,System.Boolean)">
+            <summary>
+            Opens a File for writing information.
+            </summary>
+            <param name="folder">The directory where the file resides.</param>
+            <param name="fileName">The name of the file to retrieve for update.</param>
+            <param name="createFolder">A boolean that specifies if the folder should automatically be created if it does not exist.</param>
+            <returns>bool result</returns>
+        </member>
+        <member name="T:goatgitter.lib.tools.Logger">
+            Utility class Logger handles exceptions gracefully.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
+        <member name="P:goatgitter.lib.tools.Logger.Log">
+            <inheritdoc/>
+        </member>
+        <member name="P:goatgitter.lib.tools.Logger.LogType">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tools.Logger.#ctor(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tools.Logger.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tools.Logger.LogInfo(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tools.Logger.LogError(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tools.Logger.LogWarn(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tools.Logger.LogException(System.String,System.Exception)">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tools.Logger.LogExceptionFormat(System.String,System.Object[],System.Exception)">
+            <inheritdoc/>
         </member>
     </members>
 </doc>

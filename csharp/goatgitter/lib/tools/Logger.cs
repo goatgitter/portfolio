@@ -10,7 +10,7 @@ namespace goatgitter.lib.tools
      * MIT License
      * Copyright (c) 2022 goatgitter
      * */
-    public class Logger
+    public class Logger : Base
     {
         /// <inheritdoc/>
         public ILog Log { get; private set; }

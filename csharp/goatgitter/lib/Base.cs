@@ -2,6 +2,7 @@
 using System;
 using System.Text;
 using goatgitter.lib.tools;
+using System.Diagnostics;
 
 namespace goatgitter.lib
 {
@@ -12,30 +13,6 @@ namespace goatgitter.lib
     * */
     public class Base
     {
-        /// <summary>
-        /// Notepad Property for logging purposes.
-        /// </summary>
-        public static Logger Notepad { get; set; }
-        static Base()
-        {
-            if (Notepad.IsEmpty())
-            {
-                Notepad = new Logger();
-            }
-        }
-
-        /// <summary>
-        /// Constructor for Base Objects.
-        /// Automatically creates a Notepad for logging.
-        /// </summary>
-        public Base() : base()
-        {
-            if (Notepad.IsEmpty())
-            {
-                Notepad = new Logger();
-            }
-        }
-
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {

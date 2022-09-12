@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "snippets", "snippets", "{B2B937B6-D0FD-44DE-B7F1-245ADD75B181}"
 	ProjectSection(SolutionItems) = preProject
 		snippets\classHeader.snippet = snippets\classHeader.snippet
+		snippets\tests.snippet = snippets\tests.snippet
 	EndProjectSection
 EndProject
 Global
