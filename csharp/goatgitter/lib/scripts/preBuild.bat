@@ -13,5 +13,5 @@ del /F /Q deploy
 echo Contents of deploy directory are ....
 dir deploy\*
 echo ---------------------------------
-echo           START PRE-BUILD
+echo           END PRE-BUILD
 echo ---------------------------------

@@ -88,6 +88,21 @@
             Copyright (c) 2022 goatgitter
             
         </member>
+        <member name="P:goatgitter.lib.Logger.Log">
+            <inheritdoc/>
+        </member>
+        <member name="P:goatgitter.lib.Logger.LogType">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.Logger.#ctor(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.Logger.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.Logger.LogInfo(System.String)">
+            <inheritdoc/>
+        </member>
         <member name="T:goatgitter.lib.tests.BaseTest">
             BaseTest class Tests the Base class.
             MIT License
