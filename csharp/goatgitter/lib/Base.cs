@@ -1,6 +1,7 @@
 ﻿using goatgitter.lib.extensions;
 using System;
 using System.Text;
+using goatgitter.lib.tools;
 
 namespace goatgitter.lib
 {

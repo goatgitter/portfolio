@@ -3,7 +3,7 @@ using log4net;
 using System;
 using System.Diagnostics;
 
-namespace goatgitter.lib
+namespace goatgitter.lib.tools
 {
     /** 
      * Utility class Logger handles exceptions gracefully.

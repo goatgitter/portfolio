@@ -105,19 +105,19 @@
         <member name="M:goatgitter.lib.extensions.Strings.IsNotEmpty(System.String)">
             <inheritdoc/>
         </member>
-        <member name="T:goatgitter.lib.Filer">
+        <member name="T:goatgitter.lib.tools.Filer">
             Utility class Filer gracefully handles File Input and Output Operations.
             MIT License
             Copyright (c) 2022 goatgitter
             
         </member>
-        <member name="M:goatgitter.lib.Filer.#ctor">
+        <member name="M:goatgitter.lib.tools.Filer.#ctor">
             <summary>
             Constructor for the Filer Class.
             Filers come equiped with a Notepad to record details it might need later.
             </summary>
         </member>
-        <member name="M:goatgitter.lib.Filer.SafeGetFilePath(System.String,System.String,System.Boolean)">
+        <member name="M:goatgitter.lib.tools.Filer.SafeGetFilePath(System.String,System.String,System.Boolean)">
             <summary>
             Safely gets a Path object for the params specified.
             </summary>
@@ -126,7 +126,7 @@
             <param name="createFolder">A boolean that specifies if the folder should automatically be created if it does not exist.</param>
             <returns></returns>
         </member>
-        <member name="M:goatgitter.lib.Filer.RetrieveFileForUpdate(System.String,System.String,System.Boolean)">
+        <member name="M:goatgitter.lib.tools.Filer.RetrieveFileForUpdate(System.String,System.String,System.Boolean)">
             <summary>
             Opens a File for writing information.
             </summary>
@@ -135,37 +135,37 @@
             <param name="createFolder">A boolean that specifies if the folder should automatically be created if it does not exist.</param>
             <returns>bool result</returns>
         </member>
-        <member name="T:goatgitter.lib.Logger">
+        <member name="T:goatgitter.lib.tools.Logger">
             Utility class Logger handles exceptions gracefully.
             MIT License
             Copyright (c) 2022 goatgitter
             
         </member>
-        <member name="P:goatgitter.lib.Logger.Log">
+        <member name="P:goatgitter.lib.tools.Logger.Log">
             <inheritdoc/>
         </member>
-        <member name="P:goatgitter.lib.Logger.LogType">
+        <member name="P:goatgitter.lib.tools.Logger.LogType">
             <inheritdoc/>
         </member>
-        <member name="M:goatgitter.lib.Logger.#ctor(System.Type)">
+        <member name="M:goatgitter.lib.tools.Logger.#ctor(System.Type)">
             <inheritdoc/>
         </member>
-        <member name="M:goatgitter.lib.Logger.#ctor">
+        <member name="M:goatgitter.lib.tools.Logger.#ctor">
             <inheritdoc/>
         </member>
-        <member name="M:goatgitter.lib.Logger.LogInfo(System.String)">
+        <member name="M:goatgitter.lib.tools.Logger.LogInfo(System.String)">
             <inheritdoc/>
         </member>
-        <member name="M:goatgitter.lib.Logger.LogError(System.String)">
+        <member name="M:goatgitter.lib.tools.Logger.LogError(System.String)">
             <inheritdoc/>
         </member>
-        <member name="M:goatgitter.lib.Logger.LogWarn(System.String)">
+        <member name="M:goatgitter.lib.tools.Logger.LogWarn(System.String)">
             <inheritdoc/>
         </member>
-        <member name="M:goatgitter.lib.Logger.LogException(System.String,System.Exception)">
+        <member name="M:goatgitter.lib.tools.Logger.LogException(System.String,System.Exception)">
             <inheritdoc/>
         </member>
-        <member name="M:goatgitter.lib.Logger.LogExceptionFormat(System.String,System.Object[],System.Exception)">
+        <member name="M:goatgitter.lib.tools.Logger.LogExceptionFormat(System.String,System.Object[],System.Exception)">
             <inheritdoc/>
         </member>
         <member name="T:goatgitter.lib.tests.BaseTest">
@@ -291,19 +291,19 @@
         <member name="M:goatgitter.lib.tests.extensions.StringsTest.WordCountTest">
             <inheritdoc/>
         </member>
-        <member name="T:goatgitter.lib.tests.LoggerTest">
+        <member name="T:goatgitter.lib.tests.tools.LoggerTest">
             ObjectsTest class Tests the Objects extension class.
             MIT License
             Copyright (c) 2022 goatgitter
             
         </member>
-        <member name="M:goatgitter.lib.tests.LoggerTest.CleanupTest">
+        <member name="M:goatgitter.lib.tests.tools.LoggerTest.CleanupTest">
             <inheritdoc/>
         </member>
-        <member name="M:goatgitter.lib.tests.LoggerTest.ConstructorTest">
+        <member name="M:goatgitter.lib.tests.tools.LoggerTest.ConstructorTest">
             <inheritdoc/>
         </member>
-        <member name="M:goatgitter.lib.tests.LoggerTest.LogInfoTest">
+        <member name="M:goatgitter.lib.tests.tools.LoggerTest.LogInfoTest">
             <inheritdoc/>
         </member>
         <member name="T:goatgitter.lib.tests.TestBase">

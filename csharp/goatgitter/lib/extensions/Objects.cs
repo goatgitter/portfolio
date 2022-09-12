@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
+using goatgitter.lib.tools;
 
 namespace goatgitter.lib.extensions
 {

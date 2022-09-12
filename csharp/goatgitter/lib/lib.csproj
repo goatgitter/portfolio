@@ -72,13 +72,13 @@
     <Compile Include="extensions\Objects.cs" />
     <Compile Include="extensions\StringBuilders.cs" />
     <Compile Include="extensions\Strings.cs" />
-    <Compile Include="Filer.cs" />
-    <Compile Include="Logger.cs" />
+    <Compile Include="tools\Filer.cs" />
+    <Compile Include="tools\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tests\BaseTest.cs" />
     <Compile Include="tests\extensions\ExceptionsTest.cs" />
     <Compile Include="tests\extensions\IntsTest.cs" />
-    <Compile Include="tests\LoggerTest.cs" />
+    <Compile Include="tests\tools\LoggerTest.cs" />
     <Compile Include="tests\extensions\ObjectsTest.cs" />
     <Compile Include="tests\extensions\StringBuildersTest.cs" />
     <Compile Include="tests\extensions\StringsTest.cs" />

@@ -3,7 +3,7 @@ using System.IO;
 using goatgitter.lib.extensions;
 using static goatgitter.lib.Constants;
 
-namespace goatgitter.lib
+namespace goatgitter.lib.tools
 {
     /** 
      * Utility class Filer gracefully handles File Input and Output Operations.
@@ -61,9 +61,7 @@ namespace goatgitter.lib
         public bool RetrieveFileForUpdate(string folder, string fileName, bool createFolder)
         {
             bool result = false;
-            string filePath = SafeGetFilePath(folder, fileName, createFolder);
-            
-            
+            string filePath = SafeGetFilePath(folder, fileName, createFolder);        
             return result;
         }
     }
