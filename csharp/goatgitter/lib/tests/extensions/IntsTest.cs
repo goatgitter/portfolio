@@ -3,7 +3,7 @@ using NUnit.Framework;
 using NUnit.Framework.Internal;
 using System;
 
-namespace goatgitter.lib.tests
+namespace goatgitter.lib.tests.extensions
 {
     /** 
     * ObjectsTest class Tests the Objects extension class.

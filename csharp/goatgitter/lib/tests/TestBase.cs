@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System;
 
 namespace goatgitter.lib.tests
 {
@@ -17,5 +18,68 @@ namespace goatgitter.lib.tests
         public const string TEST_TRAILING_SPACES_STR = "Pippi         ";
         public const string TEST_HAS_PERIODS_STR = "Pippi.Longstocking";
         public const string TEST_HAS_QUESTIONS_STR = "Pippi?Longstocking";
+        public const string TEST_EXCEPTION_MSG = "TestExceptionMessage";
+        public const string TEST_EXCEPTION_SRC = "TestExceptionSource";
+        public const string TEST_INNER_EXCEPTION_MSG = "TestInnerExceptionMessage";
+        public const string TEST_INNER_EXCEPTION_SRC = "TestInnerExceptionSource";
+
+        public void CreateTestInnerException()
+        {
+            throw new Exception(TEST_INNER_EXCEPTION_MSG)
+            {
+                Source = TEST_INNER_EXCEPTION_SRC,
+            };
+        }
+
+        public void CreateTestExceptionWithInner()
+        {
+            try
+            {
+                this.CreateTestInnerException();
+            }
+            catch (Exception inner)
+            {
+                throw new Exception(TEST_EXCEPTION_MSG, inner)
+                {
+                    Source = TEST_EXCEPTION_SRC
+                };
+            }
+        }
+
+        public Exception GetTestExceptionWithInner()
+        {
+            Exception outer = null;
+            try
+            {
+                this.CreateTestExceptionWithInner();
+            }
+            catch (Exception exception)
+            {
+                outer = exception;
+            }
+            return outer;
+        }
+
+        public void CreateTestException()
+        {
+            throw new Exception(TEST_EXCEPTION_MSG)
+            {
+                Source = TEST_EXCEPTION_SRC
+            };
+        }
+
+        public Exception GetTestException()
+        {
+            Exception outer = null;
+            try
+            {
+                this.CreateTestException();
+            }
+            catch (Exception exception)
+            {
+                outer = exception;
+            }
+            return outer;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace goatgitter.lib.extensions
 {
@@ -10,6 +11,19 @@ namespace goatgitter.lib.extensions
 
     public static class Objects
     {
+        private static Logger Notepad { get; set; }
+        static Logger GetLog(this object obj)
+        {
+            if (obj.IsNotEmpty())
+            {
+                if (Notepad.IsEmpty())
+                {
+                    Notepad = new Logger(obj.GetType());
+                }
+            }
+            return Notepad;
+        }
+
         /// <inheritdoc/>
         public static string SafeToString(this object obj)
         {
