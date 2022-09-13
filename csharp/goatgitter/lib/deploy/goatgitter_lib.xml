@@ -184,6 +184,13 @@
             This will generate an error that is logged and return a null result.
             </summary>
         </member>
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeGetFilePathForInvalidFile">
+            <summary>
+            Tests the SafeGetFilePath Method 
+            For an Invalid file name.
+            This will generate an error that is logged and return a null result.
+            </summary>
+        </member>
         <member name="T:goatgitter.lib.tests.tools.LoggerTest">
              MIT License
              Copyright (c) 2022 goatgitter

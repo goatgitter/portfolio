@@ -45,7 +45,10 @@ namespace goatgitter.lib.tools
                         Notepad.LogExceptionWithData(ERR_CREATE_DIR, new object[] { folder }, exception);
                     }
                 }
-                string filePath = Path.Combine(folder, fileName);
+                if (File.Exists(fileName))
+                {
+                    result = Path.Combine(folder, fileName);
+                }                
             }
             return result;
         }

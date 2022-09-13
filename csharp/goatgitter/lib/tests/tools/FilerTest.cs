@@ -136,5 +136,18 @@ namespace goatgitter.lib.tests.tools
             Assert.IsNull(result);
         }
 
+        /// <summary>
+        /// Tests the SafeGetFilePath Method 
+        /// For an Invalid file name.
+        /// This will generate an error that is logged and return a null result.
+        /// </summary>
+        [Test]
+        public void SafeGetFilePathForInvalidFile()
+        {
+            testObj = new Filer(MockLogger.Object);
+            string result = testObj.SafeGetFilePath(TEST_DIR_NAME, TEST_FILE_INVALID, true);
+            VerifyNoErrorNullResult(result, TEST_DIR_NAME);
+        }
+
     }
 }

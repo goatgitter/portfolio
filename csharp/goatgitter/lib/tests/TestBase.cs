@@ -32,6 +32,7 @@ namespace goatgitter.lib.tests
         public const string TEST_FILE_NAME = "testFile.log";
         public const string TEST_DIR_NAME = "testData";
         public const string TEST_DIR_INVALID = "*+";
+        public const string TEST_FILE_INVALID = "testFile*+";
 
         // Base Logging
         protected Mock<ILogger> MockAppLogger = null;
