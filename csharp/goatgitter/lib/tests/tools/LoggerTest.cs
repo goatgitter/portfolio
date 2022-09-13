@@ -49,7 +49,6 @@ namespace goatgitter.lib.tests.tools
             Assert.IsNotNull(testObj.LogType);
             Type currentType = System.Reflection.MethodBase.GetCurrentMethod().DeclaringType;
             Assert.AreEqual(currentType, testObj.LogType);
-            VerifyStarted(currentType, 1);
         }
 
         /// <summary>

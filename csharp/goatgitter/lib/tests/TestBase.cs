@@ -37,6 +37,7 @@ namespace goatgitter.lib.tests
         protected Mock<ILogger> MockAppLogger = null;
         protected Mock<ILogger> MockLogger = null;
         protected Mock<ILog> MockLog = null;
+        protected Mock<ILog> MockAppLog = null;
         protected Type TestLogType = null;
 
         protected void SetupMocks()
@@ -67,8 +68,15 @@ namespace goatgitter.lib.tests
             MockLogger.Setup(o => o.LogExceptionWithData(It.IsAny<string>(), It.IsAny<object[]>(),
                 It.IsAny<Exception>())).Verifiable();
 
+            MockAppLog = new Mock<ILog>();
+            MockAppLog.Setup(o => o.Info(It.IsAny<string>())).Verifiable();
+            MockAppLog.Setup(o => o.Error(It.IsAny<string>())).Verifiable();
+            MockAppLog.Setup(o => o.Warn(It.IsAny<string>())).Verifiable();
+            MockAppLog.Setup(o => o.Error(It.IsAny<string>())).Verifiable();
+            MockAppLog.Setup(o => o.ErrorFormat(It.IsAny<string>(), It.IsAny<object[]>())).Verifiable();
+
             MockAppLogger = new Mock<ILogger>();
-            MockAppLogger.Setup(s => s.Log).Returns(MockLog.Object);
+            MockAppLogger.Setup(s => s.Log).Returns(MockAppLog.Object);
             if (TestLogType.IsEmpty())
             {
                 Type logType = new StackFrame(1).GetMethod().DeclaringType;
@@ -91,6 +99,7 @@ namespace goatgitter.lib.tests
         {
             MockLog.Reset();
             MockLogger.Reset();
+            MockAppLog.Reset();
             MockAppLogger.Reset();
         }
 

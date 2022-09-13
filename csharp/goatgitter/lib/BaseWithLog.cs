@@ -20,8 +20,14 @@ namespace goatgitter.lib
         {
             if (AppNotepad.IsEmpty())
             {
-                AppNotepad = new Logger();
+                InitAppNotepad();
             }
+        }
+
+        private static void InitAppNotepad()
+        {
+            Type logType = new StackFrame(3).GetMethod().DeclaringType;
+            AppNotepad = new Logger(null, logType);
         }
 
         /// <summary>
@@ -39,7 +45,7 @@ namespace goatgitter.lib
             {
                 if (appNotepad.IsEmpty())
                 {
-                    AppNotepad = new Logger();
+                    InitAppNotepad();
                 }
                 else
                 {
@@ -56,8 +62,7 @@ namespace goatgitter.lib
                 else
                 {
                     Notepad = notepad;
-                }
-               
+                }               
             }
         }
     }

@@ -54,7 +54,6 @@ namespace goatgitter.lib.tools
             {
                 Log = LogManager.GetLogger(LogType);
             }
-            Started();
         }
 
         /// <summary>
@@ -64,9 +63,12 @@ namespace goatgitter.lib.tools
         public void Started()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("Started logging for LogType -> ");
+            sb.AppendLine("");
+            sb.AppendLine("\t\t Started logging for :");
+            sb.Append("\t\t LogType -> ");
             sb.AppendIf(LogType.Name);
-            sb.AppendLine(String.Format(" At -> {0}", DateTime.Now.ToString()));
+            sb.AppendLine("");
+            sb.AppendLine(String.Format("\t\t At -> {0}", DateTime.Now.ToString()));
             Log.Info(sb.ToString());
         }
 
