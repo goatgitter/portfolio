@@ -20,8 +20,6 @@ namespace goatgitter.lib.tests.tools
     public class FilerTest : TestBase
     {
         private Filer testObj;
-        private Mock<ILogger> mLog = null;
-
 
         /// <summary>
         /// Creates initial state of the objects for test execution.
@@ -29,11 +27,9 @@ namespace goatgitter.lib.tests.tools
         [SetUp]
         public void SetupTest()
         {
-            mLog = new Mock<ILogger>();
-            mLog.Setup(o => o.LogInfo(It.IsAny<string>())).Verifiable();
-
+            TestLogType = typeof(Filer);
+            SetupMocks();
         }
-
 
         /// <summary>
         /// Resets objects modified during the test execution.
@@ -41,8 +37,8 @@ namespace goatgitter.lib.tests.tools
         [TearDown]
         public void CleanupTest()
         {
+            ResetMocks();
             testObj = null;
-            mLog = null;
         }
 
         /// <summary>
@@ -51,7 +47,8 @@ namespace goatgitter.lib.tests.tools
         [Test]
         public void ConstructorTest()
         {
-            testObj = new Filer();
+
+            testObj = new Filer(MockLogger.Object);
             Assert.IsNotNull(testObj);
             Assert.IsNotNull(testObj.Notepad);
             Assert.IsNotNull(testObj.Notepad.Log);
@@ -61,7 +58,7 @@ namespace goatgitter.lib.tests.tools
 
         private void VerifyErrorCreateDir(string folder, int numTimes)
         {
-            mLog.Verify(m => m.LogExceptionWithData(It.Is<string>(s => s.Equals(ERR_CREATE_DIR)),
+            MockLogger.Verify(m => m.LogExceptionWithData(It.Is<string>(s => s.Equals(ERR_CREATE_DIR)),
                 It.Is<object[]>(o => o.Contains<object>(folder)),
                 It.IsAny<Exception>()), Times.Exactly(numTimes));
         }
@@ -79,7 +76,7 @@ namespace goatgitter.lib.tests.tools
         [Test]
         public void SafeGetFilePathTest()
         {
-            testObj = new Filer(mLog.Object);
+            testObj = new Filer(MockLogger.Object);
             string folder = null;
             string fileName = null;
 
@@ -133,7 +130,7 @@ namespace goatgitter.lib.tests.tools
         [Test]
         public void SafeGetFilePathForInvalid()
         {
-            testObj = new Filer(mLog.Object);
+            testObj = new Filer(MockLogger.Object);
             string result = testObj.SafeGetFilePath(TEST_DIR_INVALID,TEST_FILE_NAME, true);
             VerifyErrorCreateDir(TEST_DIR_INVALID, 1);
             Assert.IsNull(result);

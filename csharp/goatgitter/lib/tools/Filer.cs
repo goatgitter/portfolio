@@ -17,7 +17,7 @@ namespace goatgitter.lib.tools
         /// Constructor for the Filer Class.
         /// Filers come equiped with a Notepad to record details it might need later.
         /// </summary>
-        public Filer(ILogger notepad = null) : base(notepad)
+        public Filer(ILogger notepad = null) : base(notepad: notepad)
         {
             
         }

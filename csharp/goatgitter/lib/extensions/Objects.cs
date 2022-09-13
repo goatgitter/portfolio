@@ -18,7 +18,7 @@ namespace goatgitter.lib.extensions
             {
                 if (Notepad.IsEmpty())
                 {
-                    Notepad = new Logger(obj.GetType());
+                    Notepad = new Logger(null, obj.GetType());
                 }
             }
             return Notepad;

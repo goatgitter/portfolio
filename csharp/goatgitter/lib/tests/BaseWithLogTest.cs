@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using goatgitter.lib.tools;
+using Moq;
+using NUnit.Framework;
 
 namespace goatgitter.lib.tests
 {
@@ -15,7 +17,11 @@ namespace goatgitter.lib.tests
         {
             public int Id { get; set; }
             public string Name { get; set; }
+            
+            public TestClass(ILogger appNotepad, ILogger notepad) : base(appNotepad, notepad)
+            {
 
+            }
         }
 
         public TestClass testClassObj;
@@ -24,7 +30,9 @@ namespace goatgitter.lib.tests
         [SetUp]
         public void SetupTest()
         {
-            testClassObj = new TestClass()
+            TestLogType = typeof(TestClass);
+            SetupMocks();
+            testClassObj = new TestClass(MockAppLogger.Object, MockLogger.Object)
             {
                 Id = TEST_ID,
                 Name = TEST_NAME
@@ -37,6 +45,7 @@ namespace goatgitter.lib.tests
         [TearDown]
         public void CleanupTest()
         {
+            ResetMocks();
             testClassObj = null;
         }
 
@@ -57,7 +66,7 @@ namespace goatgitter.lib.tests
         [Test]
         public void EqualsTest()
         {
-            TestClass other = new TestClass()
+            TestClass other = new TestClass(MockAppLogger.Object, MockLogger.Object)
             {
                 Id = TEST_ID,
                 Name = TEST_NAME
@@ -71,7 +80,7 @@ namespace goatgitter.lib.tests
         {
             string expected = "Prop: Id => " + TEST_ID 
                 + "\r\nProp: Name => " + TEST_NAME 
-                + "\r\nProp: Notepad => Prop: Log => log4net.Core.LogImpl\r\nProp: LogType => goatgitter.lib.tests.BaseWithLogTest+TestClass\r\n\r\n";
+                + "\r\nProp: Notepad => Mock<ILogger:9>.Object\r\n";
             Assert.AreEqual(expected, testClassObj.ToString());
         }
 
@@ -79,7 +88,7 @@ namespace goatgitter.lib.tests
         [Test]
         public void GetHashCodeTest()
         {
-            TestClass other = new TestClass()
+            TestClass other = new TestClass(MockAppLogger.Object, MockLogger.Object)
             {
                 Id = TEST_ID,
                 Name = TEST_NAME

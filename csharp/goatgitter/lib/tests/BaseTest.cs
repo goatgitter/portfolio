@@ -1,5 +1,4 @@
-﻿using goatgitter.lib.tools;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace goatgitter.lib.tests
 {
@@ -16,7 +15,6 @@ namespace goatgitter.lib.tests
         {
             public int Id { get; set; }
             public string Name { get; set; }
-
         }
 
         public TestClass testClassObj;

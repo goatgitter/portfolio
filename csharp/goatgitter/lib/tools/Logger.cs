@@ -36,29 +36,24 @@ namespace goatgitter.lib.tools
         /// </summary>
         public Type LogType { get; set; }
 
-        
-        /// <summary>
-        /// Constructor for the Logger class that accepts the Log Type as a parameter.
-        /// </summary>
-        /// <param name="logType">They Type to be printed in the Log4Net Log Messages.</param>
-        public Logger(Type logType)
-        {
-            LogType = logType;
-            Init();
-        }
-
         /// <summary>
         /// Constructor for the Logger class that automatically sets the Log Type to the caller's type.
         /// </summary>
-        public Logger()
+        /// <param name="log">The log4net log to use, or null.  If Null, automatically created.</param>
+        /// <param name="logType">They Type to be printed in the Log4Net Log Messages.</param>
+        public Logger(ILog log = null, Type logType = null)
         {
-            LogType = new StackFrame(1).GetMethod().DeclaringType;
-            Init();
-        }
+            Log = log;
+            LogType = logType;
+            if (LogType.IsEmpty())
+            {
+                LogType = new StackFrame(1).GetMethod().DeclaringType;
+            }
 
-        private void Init()
-        {
-            Log = LogManager.GetLogger(LogType);
+            if (Log.IsEmpty())
+            {
+                Log = LogManager.GetLogger(LogType);
+            }
             Started();
         }
 

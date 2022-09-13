@@ -35,7 +35,7 @@
              Instance Notepad Property for logging purposes.
             </summary>
         </member>
-        <member name="M:goatgitter.lib.BaseWithLog.#ctor(goatgitter.lib.tools.ILogger)">
+        <member name="M:goatgitter.lib.BaseWithLog.#ctor(goatgitter.lib.tools.ILogger,goatgitter.lib.tools.ILogger)">
             <summary>
             Constructor for BaseWithLog Objects.
             Automatically creates a Notepad for logging.
@@ -191,6 +191,11 @@
              Purpose : Tests the Logger Class.
             
         </member>
+        <member name="M:goatgitter.lib.tests.tools.LoggerTest.SetupTest">
+            <summary>
+            Creates initial state of the objects for test execution.
+            </summary>
+        </member>
         <member name="M:goatgitter.lib.tests.tools.LoggerTest.CleanupTest">
             <summary>
             Resets objects modified during the test execution.
@@ -202,7 +207,14 @@
             </summary>
         </member>
         <member name="M:goatgitter.lib.tests.tools.LoggerTest.LogInfoTest">
-            <inheritdoc/>
+            <summary>
+            Tests the LogInfo Method
+            </summary>
+        </member>
+        <member name="M:goatgitter.lib.tests.tools.LoggerTest.LogErrorTest">
+            <summary>
+            Tests the LogError Method
+            </summary>
         </member>
         <member name="T:goatgitter.lib.tests.BaseTest">
             BaseTest class Tests the Base class.
@@ -394,16 +406,12 @@
             The Type that will be printed in the Log4Net Log Messages.
             </summary>
         </member>
-        <member name="M:goatgitter.lib.tools.Logger.#ctor(System.Type)">
-            <summary>
-            Constructor for the Logger class that accepts the Log Type as a parameter.
-            </summary>
-            <param name="logType">They Type to be printed in the Log4Net Log Messages.</param>
-        </member>
-        <member name="M:goatgitter.lib.tools.Logger.#ctor">
+        <member name="M:goatgitter.lib.tools.Logger.#ctor(log4net.ILog,System.Type)">
             <summary>
             Constructor for the Logger class that automatically sets the Log Type to the caller's type.
             </summary>
+            <param name="log">The log4net log to use, or null.  If Null, automatically created.</param>
+            <param name="logType">They Type to be printed in the Log4Net Log Messages.</param>
         </member>
         <!-- Badly formed XML comment ignored for member "M:goatgitter.lib.tools.Logger.Started" -->
         <member name="M:goatgitter.lib.tools.Logger.LogInfo(System.String)">
