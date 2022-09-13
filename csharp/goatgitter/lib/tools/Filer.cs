@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using goatgitter.lib.extensions;
 using static goatgitter.lib.Constants;
@@ -18,7 +17,7 @@ namespace goatgitter.lib.tools
         /// Constructor for the Filer Class.
         /// Filers come equiped with a Notepad to record details it might need later.
         /// </summary>
-        public Filer() : base()
+        public Filer(ILogger notepad = null) : base(notepad)
         {
             
         }
@@ -43,7 +42,7 @@ namespace goatgitter.lib.tools
                     }
                     catch (Exception exception)
                     {
-                        Notepad.LogExceptionFormat(ERR_CREATE_DIR, new object[] { folder }, exception);
+                        Notepad.LogExceptionWithData(ERR_CREATE_DIR, new object[] { folder }, exception);
                     }
                 }
                 string filePath = Path.Combine(folder, fileName);
@@ -71,7 +70,7 @@ namespace goatgitter.lib.tools
                     }
                     catch (Exception exception)
                     {
-                        Notepad.LogExceptionFormat(ERR_DELETE_DIR, new object[] { folder, emptyFolder }, exception);
+                        Notepad.LogExceptionWithData(ERR_DELETE_DIR, new object[] { folder, emptyFolder }, exception);
                     }
                 }
             }

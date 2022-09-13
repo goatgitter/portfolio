@@ -35,7 +35,7 @@
              Instance Notepad Property for logging purposes.
             </summary>
         </member>
-        <member name="M:goatgitter.lib.BaseWithLog.#ctor">
+        <member name="M:goatgitter.lib.BaseWithLog.#ctor(goatgitter.lib.tools.ILogger)">
             <summary>
             Constructor for BaseWithLog Objects.
             Automatically creates a Notepad for logging.
@@ -157,6 +157,11 @@
              Purpose : Tests the Filer Class.
             
         </member>
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.SetupTest">
+            <summary>
+            Creates initial state of the objects for test execution.
+            </summary>
+        </member>
         <member name="M:goatgitter.lib.tests.tools.FilerTest.CleanupTest">
             <summary>
             Resets objects modified during the test execution.
@@ -170,6 +175,13 @@
         <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeGetFilePathTest">
             <summary>
             Tests the Constructor
+            </summary>
+        </member>
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeGetFilePathForInvalid">
+            <summary>
+            Tests the SafeGetFilePath Method 
+            For an Invalid directory name.
+            This will generate an error that is logged and return a null result.
             </summary>
         </member>
         <member name="T:goatgitter.lib.tests.tools.LoggerTest">
@@ -334,7 +346,7 @@
             Copyright (c) 2022 goatgitter
             
         </member>
-        <member name="M:goatgitter.lib.tools.Filer.#ctor">
+        <member name="M:goatgitter.lib.tools.Filer.#ctor(goatgitter.lib.tools.ILogger)">
             <summary>
             Constructor for the Filer Class.
             Filers come equiped with a Notepad to record details it might need later.
@@ -373,31 +385,59 @@
             
         </member>
         <member name="P:goatgitter.lib.tools.Logger.Log">
-            <inheritdoc/>
+            <summary>
+            The Log4Net Log
+            </summary>
         </member>
         <member name="P:goatgitter.lib.tools.Logger.LogType">
-            <inheritdoc/>
+            <summary>
+            The Type that will be printed in the Log4Net Log Messages.
+            </summary>
         </member>
         <member name="M:goatgitter.lib.tools.Logger.#ctor(System.Type)">
-            <inheritdoc/>
+            <summary>
+            Constructor for the Logger class that accepts the Log Type as a parameter.
+            </summary>
+            <param name="logType">They Type to be printed in the Log4Net Log Messages.</param>
         </member>
         <member name="M:goatgitter.lib.tools.Logger.#ctor">
-            <inheritdoc/>
+            <summary>
+            Constructor for the Logger class that automatically sets the Log Type to the caller's type.
+            </summary>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:goatgitter.lib.tools.Logger.Started" -->
         <member name="M:goatgitter.lib.tools.Logger.LogInfo(System.String)">
-            <inheritdoc/>
+            <summary>
+            Logs a message to the Log at the Info Level.
+            </summary>
+            <param name="info">A string containing the message to be logged.</param>
         </member>
         <member name="M:goatgitter.lib.tools.Logger.LogError(System.String)">
-            <inheritdoc/>
+            <summary>
+            Logs a message to the Log at the Error Level.
+            </summary>
+            <param name="error">A string containing the message to be logged.</param>
         </member>
         <member name="M:goatgitter.lib.tools.Logger.LogWarn(System.String)">
-            <inheritdoc/>
+            <summary>
+            Logs a message to the Log at the Warning Level.
+            </summary>
+            <param name="warning">A string containing the message to be logged.</param>
         </member>
         <member name="M:goatgitter.lib.tools.Logger.LogException(System.String,System.Exception)">
-            <inheritdoc/>
+            <summary>
+            Logs a message to the Log at the Error Level.
+            </summary>
+            <param name="message">A string containing the message to be logged.</param>
+            <param name="exception">An exception contianing information to be logged.</param>
         </member>
-        <member name="M:goatgitter.lib.tools.Logger.LogExceptionFormat(System.String,System.Object[],System.Exception)">
-            <inheritdoc/>
+        <member name="M:goatgitter.lib.tools.Logger.LogExceptionWithData(System.String,System.Object[],System.Exception)">
+            <summary>
+            Logs a message with data to the Log at the Error Level.
+            </summary>
+            <param name="message">A string containing the message to be logged.</param>
+            <param name="messageData">An array of objects containing the data for the message to be logged.</param>
+            <param name="exception">An exception contianing information to be logged.</param>
         </member>
     </members>
 </doc>

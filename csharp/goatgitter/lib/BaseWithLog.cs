@@ -31,13 +31,13 @@ namespace goatgitter.lib
         /// <summary>
         ///  Instance Notepad Property for logging purposes.
         /// </summary>
-        public Logger Notepad { get; set; }
+        public ILogger Notepad { get; set; }
 
         /// <summary>
         /// Constructor for BaseWithLog Objects.
         /// Automatically creates a Notepad for logging.
         /// </summary>
-        public BaseWithLog() : base()
+        public BaseWithLog(ILogger notepad = null) : base()
         {
             if (AppNotepad.IsEmpty())
             {
@@ -45,8 +45,16 @@ namespace goatgitter.lib
             }
             if (Notepad.IsEmpty())
             {
-                Type logType = new StackFrame(1).GetMethod().DeclaringType;
-                Notepad = new Logger(logType);
+                if (notepad.IsEmpty())
+                {
+                    Type logType = new StackFrame(1).GetMethod().DeclaringType;
+                    Notepad = new Logger(logType);
+                }
+                else
+                {
+                    Notepad = notepad;
+                }
+               
             }
         }
     }
