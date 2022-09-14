@@ -42,6 +42,7 @@ namespace goatgitter.lib.tools
                 {
                     string filePath = Path.Combine(folder, fileName);
                     bool fileExists = File.Exists(filePath);
+                    result = fileExists ? filePath : null;
                 }
                 catch (Exception exception)
                 {
