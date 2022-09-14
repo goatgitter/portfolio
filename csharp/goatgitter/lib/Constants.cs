@@ -12,5 +12,7 @@
         public const string ERR_OCCURRED = "An error occurred in method: ";
         public const string ERR_EXCEPTION_MSG = "Exception Message :";
         public const string ERR_CREATE_FILE = "An error occurred while creating file {0}.";
+        public const string ERR_GET_PATH = "An error occurred while getting the file path for directory = {0} file = {1}.";
+
     }
 }

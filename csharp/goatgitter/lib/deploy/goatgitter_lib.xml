@@ -175,31 +175,32 @@
         </member>
         <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeGetFilePathTestForNoErrorNullResult(System.String,System.String,System.Boolean,System.Boolean)">
             <summary>
-            Tests the SafeGetFilePath method for cases where there are no errors and the result is null.
+            Tests the SafeGetFilePath method for cases where:
+                There are no errors and the result is null.
             </summary>
         </member>
         <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeGetFilePathTestForNoErrorNotNullResult(System.String,System.String,System.Boolean,System.Boolean)">
             <summary>
-            Tests the SafeGetFilePath method for cases where there are no errors and the result is not null.
+            Tests the SafeGetFilePath method for cases where:
+                There are no errors and the result is NOT null.
             </summary>
         </member>
-        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeGetFilePathForInvalid">
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeGetFilePathForInvalid(System.String,System.String,System.Boolean,System.Boolean)">
             <summary>
-            Tests the SafeGetFilePath Method 
-            For an Invalid directory name.
-            This will generate an error that is logged and return a null result.
+            Tests the SafeGetFilePath Method method for cases where:
+            There is one error and the result is null.
             </summary>
         </member>
-        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeGetFilePathForInvalidFile">
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeCreateDirectoryTest(System.String)">
             <summary>
-            Tests the SafeGetFilePath Method 
-            For an Invalid file name.
-            This will generate an error that is logged and return a null result.
+            Tests the SafeCreateDirectory Method for cases where:
+            No Errors, and result is true
             </summary>
         </member>
-        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeCreateDirectoryTest">
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeCreateDirectoryForErrorTest(System.String)">
             <summary>
-            Tests the SafeCreateDirectory Method 
+            Tests the SafeCreateDirectory Method for cases where:
+            On Error, and result is false
             </summary>
         </member>
         <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeDeleteFolderTestNoErrorTrueResult(System.String,System.Boolean,System.Boolean,System.Boolean)">

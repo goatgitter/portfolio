@@ -74,12 +74,13 @@ namespace goatgitter.lib.tests.tools
                 It.IsAny<Exception>()), Times.Exactly(numTimes));
         }
 
-        private void VerifyCreateDirNoErrorNullResult(string result, string folder)
+        private void VerifySafeGetFilePathError(string folder, string fileName, int numTimes)
         {
-            VerifyCreateDirError(folder, 0);
-            Assert.IsNull(result);
-            bool deleteResult = testObj.SafeDeleteFolder(folder);
-            Assert.IsTrue(deleteResult);
+            String dirPath = testObj.GetAppPathFolder(folder);
+            MockLogger.Verify(m => m.LogExceptionWithData(
+                It.Is<string>(s => s.Equals(ERR_GET_PATH)),
+                It.Is<object[]>(o => o.Contains<object>(dirPath) && o.Contains<object>(fileName)),
+                It.IsAny<Exception>()), Times.Exactly(numTimes));
         }
 
         private void VerifyDeleteDirError(string folder, bool emptyFolder, int numTimes)
@@ -88,12 +89,6 @@ namespace goatgitter.lib.tests.tools
             MockLogger.Verify(m => m.LogExceptionWithData(It.Is<string>(s => s.Equals(ERR_DELETE_DIR)),
                 It.Is<object[]>(o => o.Contains<object>(dirPath) && o.Contains<object>(emptyFolder)),
                 It.IsAny<Exception>()), Times.Exactly(numTimes));
-        }
-
-        private void VerifyDeleteDirNoErrorFalseResult(bool result, string folder, bool emptyFolder)
-        {
-            VerifyDeleteDirError(folder, emptyFolder, 0);
-            Assert.IsFalse(result);
         }
 
         private void VerifyCreateDirNoErrorTrueResult(bool result, string folder)
@@ -115,7 +110,8 @@ namespace goatgitter.lib.tests.tools
         }
 
         /// <summary>
-        /// Tests the SafeGetFilePath method for cases where there are no errors and the result is null.
+        /// Tests the SafeGetFilePath method for cases where:
+        ///     There are no errors and the result is null.
         /// </summary>
         [Test]
         [TestCase(null, null, false, false)]
@@ -136,15 +132,27 @@ namespace goatgitter.lib.tests.tools
         [TestCase(TEST_DIR_NAME, TEST_FILE_NAME, false, false)]
         [TestCase(TEST_DIR_NAME, TEST_FILE_NAME, false, true)]
         [TestCase(TEST_DIR_NAME, TEST_FILE_NAME, true, false)]
+
+        [TestCase(TEST_DIR_NAME, TEST_FILE_INVALID, false, false)]
+        [TestCase(TEST_DIR_NAME, TEST_FILE_INVALID, false, true)]
+        [TestCase(TEST_DIR_NAME, TEST_FILE_INVALID, true, false)]
+        [TestCase(TEST_DIR_NAME, TEST_FILE_INVALID, true, true)]
+
+        [TestCase(TEST_DIR_INVALID, TEST_FILE_NAME, false, false)]
+        [TestCase(TEST_DIR_INVALID, TEST_FILE_NAME, false, true)]
         public void SafeGetFilePathTestForNoErrorNullResult(string folder, string fileName, bool createFolder = false, bool createFile = false)
         {
             testObj = new Filer(MockLogger.Object);
             string result = testObj.SafeGetFilePath(folder, fileName, createFolder, createFile);
-            VerifyCreateDirNoErrorNullResult(result, folder);
+            VerifySafeGetFilePathError(folder, fileName, 0);
+            Assert.IsNull(result);
+            bool deleteResult = testObj.SafeDeleteFolder(folder);
+            Assert.IsTrue(deleteResult);
         }
 
         /// <summary>
-        /// Tests the SafeGetFilePath method for cases where there are no errors and the result is not null.
+        /// Tests the SafeGetFilePath method for cases where:
+        ///     There are no errors and the result is NOT null.
         /// </summary>
         [Test]
         [TestCase(TEST_DIR_NAME, TEST_FILE_NAME, true, true)]
@@ -152,7 +160,8 @@ namespace goatgitter.lib.tests.tools
         {
             testObj = new Filer(MockLogger.Object);
             string result = testObj.SafeGetFilePath(folder, fileName, createFolder, createFile);
-            VerifyCreateDirError(folder, 0);
+
+            VerifySafeGetFilePathError(folder, fileName, 0);
             Assert.IsNotNull(result);
             bool deleteResult = testObj.SafeDeleteFolder(folder);
             Assert.IsTrue(deleteResult);
@@ -160,42 +169,48 @@ namespace goatgitter.lib.tests.tools
 
 
         /// <summary>
-        /// Tests the SafeGetFilePath Method 
-        /// For an Invalid directory name.
-        /// This will generate an error that is logged and return a null result.
+        /// Tests the SafeGetFilePath Method method for cases where:
+        /// There is one error and the result is null.
         /// </summary>
         [Test]
-        public void SafeGetFilePathForInvalid()
+        [TestCase(TEST_DIR_INVALID, TEST_FILE_NAME, true, true)]
+        [TestCase(TEST_DIR_INVALID, TEST_FILE_NAME, true, false)]
+        public void SafeGetFilePathForInvalid(string folder, string fileName, bool createFolder = false, bool createFile = false)
         {
             testObj = new Filer(MockLogger.Object);
-            string result = testObj.SafeGetFilePath(TEST_DIR_INVALID,TEST_FILE_NAME, true);
-            VerifyCreateDirError(TEST_DIR_INVALID, 1);
+            string result = testObj.SafeGetFilePath(folder, fileName, createFolder, createFile);
+            VerifyCreateDirError(folder, 1);
             Assert.IsNull(result);
         }
 
         /// <summary>
-        /// Tests the SafeGetFilePath Method 
-        /// For an Invalid file name.
-        /// This will generate an error that is logged and return a null result.
+        /// Tests the SafeCreateDirectory Method for cases where:
+        /// No Errors, and result is true
         /// </summary>
         [Test]
-        public void SafeGetFilePathForInvalidFile()
+        [TestCase(TEST_DIR_NAME)]
+        public void SafeCreateDirectoryTest(string folder)
         {
             testObj = new Filer(MockLogger.Object);
-            string result = testObj.SafeGetFilePath(TEST_DIR_NAME, TEST_FILE_INVALID, true);
-            VerifyCreateDirNoErrorNullResult(result, TEST_DIR_NAME);
+            bool result = testObj.SafeCreateDirectory(folder);
+            VerifyCreateDirNoErrorTrueResult(result, folder);
+
+            bool deleteResult = testObj.SafeDeleteFolder(folder);
+            Assert.IsTrue(deleteResult);
         }
 
         /// <summary>
-        /// Tests the SafeCreateDirectory Method 
+        /// Tests the SafeCreateDirectory Method for cases where:
+        /// On Error, and result is false
         /// </summary>
         [Test]
-        public void SafeCreateDirectoryTest()
+        [TestCase(TEST_DIR_INVALID)]
+        public void SafeCreateDirectoryForErrorTest(string folder)
         {
             testObj = new Filer(MockLogger.Object);
-            string folder = TEST_DIR_NAME;
             bool result = testObj.SafeCreateDirectory(folder);
-            VerifyCreateDirNoErrorTrueResult(result, folder);
+            VerifyCreateDirError(folder, 0);
+            Assert.IsFalse(result);
 
             bool deleteResult = testObj.SafeDeleteFolder(folder);
             Assert.IsTrue(deleteResult);
