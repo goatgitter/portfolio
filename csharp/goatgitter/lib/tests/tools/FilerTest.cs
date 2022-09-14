@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Moq;
 using static goatgitter.lib.Constants;
+using goatgitter.lib.extensions;
+using System.IO;
 
 namespace goatgitter.lib.tests.tools
 {
@@ -58,8 +60,9 @@ namespace goatgitter.lib.tests.tools
 
         private void VerifyCreateDirError(string folder, int numTimes)
         {
+            String dirPath = testObj.GetAppPathFolder(folder);
             MockLogger.Verify(m => m.LogExceptionWithData(It.Is<string>(s => s.Equals(ERR_CREATE_DIR)),
-                It.Is<object[]>(o => o.Contains<object>(folder)),
+                It.Is<object[]>(o => o.Contains<object>(dirPath)),
                 It.IsAny<Exception>()), Times.Exactly(numTimes));
         }
 
@@ -67,12 +70,15 @@ namespace goatgitter.lib.tests.tools
         {
             VerifyCreateDirError(folder, 0);
             Assert.IsNull(result);
+            bool deleteResult = testObj.SafeDeleteFolder(folder);
+            Assert.IsTrue(deleteResult);
         }
 
         private void VerifyDeleteDirError(string folder, bool emptyFolder, int numTimes)
         {
+            String dirPath = testObj.GetAppPathFolder(folder);
             MockLogger.Verify(m => m.LogExceptionWithData(It.Is<string>(s => s.Equals(ERR_DELETE_DIR)),
-                It.Is<object[]>(o => o.Contains<object>(folder) && o.Contains<object>(emptyFolder)),
+                It.Is<object[]>(o => o.Contains<object>(dirPath) && o.Contains<object>(emptyFolder)),
                 It.IsAny<Exception>()), Times.Exactly(numTimes));
         }
 
@@ -104,42 +110,74 @@ namespace goatgitter.lib.tests.tools
             string folder = null;
             string fileName = null;
 
-            // Null Folder, null File, Do NOT Create folder
-            
-            string result = testObj.SafeGetFilePath(folder, fileName, false);
+            // Null Folder, null File, Do NOT Create folder, Do NOT Create File
+            string result = testObj.SafeGetFilePath(folder, fileName, false, false);
             VerifyCreateDirNoErrorNullResult(result, folder);
 
-            // Null Folder, null File, Do Create folder
-            result = testObj.SafeGetFilePath(folder, fileName, true);
+            // Null Folder, null File, Do NOT Create folder, Do Create File
+            result = testObj.SafeGetFilePath(folder, fileName, false, true);
             VerifyCreateDirNoErrorNullResult(result, folder);
 
-            // Null Folder, NOT null File, Do NOT Create folder
+            // Null Folder, null File, Do Create folder, Do NOT Create File
+            result = testObj.SafeGetFilePath(folder, fileName, true, false);
+            VerifyCreateDirNoErrorNullResult(result, folder);
+
+            // Null Folder, null File, Do Create folder, Do Create File
+            result = testObj.SafeGetFilePath(folder, fileName, true, true);
+            VerifyCreateDirNoErrorNullResult(result, folder);
+
+            // Null Folder, NOT null File, Do NOT Create folder, Do NOT Create File
             fileName = TEST_FILE_NAME;
-            result = testObj.SafeGetFilePath(folder, fileName, false);
+            result = testObj.SafeGetFilePath(folder, fileName, false, false);
             VerifyCreateDirNoErrorNullResult(result, folder);
 
-            // Null Folder, NOT null File, Do Create folder
-            result = testObj.SafeGetFilePath(folder, fileName, true);
+            // Null Folder, NOT null File, Do NOT Create folder, Do Create File
+            result = testObj.SafeGetFilePath(folder, fileName, false, true);
             VerifyCreateDirNoErrorNullResult(result, folder);
 
-            // NOT Null Folder, null File, Do NOT Create folder
+            // Null Folder, NOT null File, Do Create folder, Do NOT Create File
+            result = testObj.SafeGetFilePath(folder, fileName, true, false);
+            VerifyCreateDirNoErrorNullResult(result, folder);
+
+            // Null Folder, NOT null File, Do Create folder, Do Create File
+            result = testObj.SafeGetFilePath(folder, fileName, true, true);
+            VerifyCreateDirNoErrorNullResult(result, folder);
+
+            // NOT Null Folder, null File, Do NOT Create folder, Do NOT Create File
             folder = TEST_DIR_NAME;
             fileName = null;
-            result = testObj.SafeGetFilePath(folder, fileName, false);
+            result = testObj.SafeGetFilePath(folder, fileName, false, false);
             VerifyCreateDirNoErrorNullResult(result, folder);
 
-            // NOT Null Folder, null File, Do Create folder
-            result = testObj.SafeGetFilePath(folder, fileName, true);
+            // NOT Null Folder, null File, Do NOT Create folder, Do Create File
+            result = testObj.SafeGetFilePath(folder, fileName, false, true);
             VerifyCreateDirNoErrorNullResult(result, folder);
 
-            // NOT Null Folder, NOT null File, Do NOT Create folder
+            // NOT Null Folder, null File, Do Create folder, Do NOT Create File
+            result = testObj.SafeGetFilePath(folder, fileName, true, false);
+            VerifyCreateDirNoErrorNullResult(result, folder);
+
+            // NOT Null Folder, null File, Do Create folder, Do Create File
+            result = testObj.SafeGetFilePath(folder, fileName, true, true);
+            VerifyCreateDirNoErrorNullResult(result, folder);
+
+            // NOT Null Folder, NOT null File, Do NOT Create folder, Do NOT Create File
             fileName = TEST_FILE_NAME;
-            result = testObj.SafeGetFilePath(folder, fileName, false);
+            result = testObj.SafeGetFilePath(folder, fileName, false, false);
             VerifyCreateDirNoErrorNullResult(result, folder);
 
-            // NOT Null Folder, NOT null File, Do Create folder
-            result = testObj.SafeGetFilePath(folder, fileName, true);
+            // NOT Null Folder, NOT null File, Do Create folder, Do NOT Create File
+            result = testObj.SafeGetFilePath(folder, fileName, true, false);
             VerifyCreateDirNoErrorNullResult(result, folder);
+
+            // NOT Null Folder, NOT null File, Do NOT Create folder, Do Create File
+            result = testObj.SafeGetFilePath(folder, fileName, false, true);
+            VerifyCreateDirNoErrorNullResult(result, folder);
+
+            // NOT Null Folder, NOT null File, Do Create folder, Do Create File
+            result = testObj.SafeGetFilePath(folder, fileName, true, true);
+            VerifyCreateDirError(folder, 0);
+            Assert.IsNotNull(result);
 
             bool deleteResult = testObj.SafeDeleteFolder(folder);
             Assert.IsTrue(deleteResult);
@@ -198,25 +236,25 @@ namespace goatgitter.lib.tests.tools
             string folder = null;
             bool emptyFolder = false;
 
-            // Null Folder,  Do NOT empty folder
+            // Null Folder, Do NOT empty folder
             bool result = testObj.SafeDeleteFolder(folder, emptyFolder);
-            VerifyDeleteDirNoErrorFalseResult(result, folder, emptyFolder);
+            VerifyDeleteDirNoErrorTrueResult(result, folder, emptyFolder);
 
             // Null Folder, Do empty folder
             emptyFolder = true;
             result = testObj.SafeDeleteFolder(folder, emptyFolder);
-            VerifyDeleteDirNoErrorFalseResult(result, folder, emptyFolder);
+            VerifyDeleteDirNoErrorTrueResult(result, folder, emptyFolder);
 
             // Folder does NOT exist, Do NOT empty folder
             folder = TEST_DIR_DNE;
             emptyFolder = false;
             result = testObj.SafeDeleteFolder(folder, emptyFolder);
-            VerifyDeleteDirNoErrorFalseResult(result, folder, emptyFolder);
+            VerifyDeleteDirNoErrorTrueResult(result, folder, emptyFolder);
 
             // Folder does NOT exist, Do empty folder
             emptyFolder = true;
             result = testObj.SafeDeleteFolder(folder, emptyFolder);
-            VerifyDeleteDirNoErrorFalseResult(result, folder, emptyFolder);
+            VerifyDeleteDirNoErrorTrueResult(result, folder, emptyFolder);
 
             // Folder does exist, and is empty, Do NOT empty folder
             folder = TEST_DIR_NAME;

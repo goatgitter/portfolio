@@ -10,6 +10,7 @@
             Copyright (c) 2022 goatgitter
             
         </member>
+        <!-- Badly formed XML comment ignored for member "P:goatgitter.lib.Base.AppPath" -->
         <member name="M:goatgitter.lib.Base.Equals(System.Object)">
             <inheritdoc/>
         </member>
@@ -391,20 +392,28 @@
             Filers come equiped with a Notepad to record details it might need later.
             </summary>
         </member>
-        <member name="M:goatgitter.lib.tools.Filer.SafeGetFilePath(System.String,System.String,System.Boolean)">
+        <member name="M:goatgitter.lib.tools.Filer.SafeGetFilePath(System.String,System.String,System.Boolean,System.Boolean)">
             <summary>
             Safely gets a Path object for the params specified.
             </summary>
             <param name="folder">The directory where the file resides.</param>
             <param name="fileName">The name of the file to retrieve.</param>
             <param name="createFolder">A boolean that specifies if the folder should automatically be created if it does not exist.</param>
-            <returns></returns>
+            <param name="createFile">A boolean that specifies if the file should automatically be created if it does not exist.</param>
+            <returns>A String for the Combined File Path.</returns>
         </member>
         <member name="M:goatgitter.lib.tools.Filer.SafeCreateDirectory(System.String)">
             <summary>
-            Safely gets a Path object for the params specified.
+            Safely creates a Directory.
             </summary>
-            <param name="folder">The directory where the file resides.</param>
+            <param name="folder">The directory to be created.</param>
+            <returns></returns>
+        </member>
+        <member name="M:goatgitter.lib.tools.Filer.SafeCreateFile(System.String)">
+            <summary>
+            Safely creates a file.
+            </summary>
+            <param name="filePath">The file path where the file will be created.</param>
             <returns></returns>
         </member>
         <member name="M:goatgitter.lib.tools.Filer.SafeDeleteFolder(System.String,System.Boolean)">
@@ -415,13 +424,20 @@
             <param name="emptyFolder">A boolean that specifies if the folder should automatically be emptied.</param>
             <returns></returns>
         </member>
-        <member name="M:goatgitter.lib.tools.Filer.RetrieveFileForUpdate(System.String,System.String,System.Boolean)">
+        <member name="M:goatgitter.lib.tools.Filer.CreateFileForWrite(System.String,System.String)">
+            <summary>
+            Creates an empty a File.
+            </summary>
+            <param name="folder">The directory where the file resides.</param>
+            <param name="fileName">The name of the file to create for write.</param>
+            <returns>bool result</returns>
+        </member>
+        <member name="M:goatgitter.lib.tools.Filer.RetrieveFileForUpdate(System.String,System.String)">
             <summary>
             Opens a File for writing information.
             </summary>
             <param name="folder">The directory where the file resides.</param>
             <param name="fileName">The name of the file to retrieve for update.</param>
-            <param name="createFolder">A boolean that specifies if the folder should automatically be created if it does not exist.</param>
             <returns>bool result</returns>
         </member>
         <member name="T:goatgitter.lib.tools.Logger">

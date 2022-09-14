@@ -13,6 +13,18 @@ namespace goatgitter.lib
     * */
     public class Base
     {
+        // <summary>
+        /// Static Application Path for File Input/Output purposes.
+        /// </summary>
+        public static string AppPath { get; set; }
+
+        static Base()
+        {
+            if (AppPath.IsEmpty())
+            {
+                AppPath = AppDomain.CurrentDomain.BaseDirectory;
+            }
+        }
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {

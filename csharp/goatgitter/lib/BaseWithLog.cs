@@ -16,6 +16,7 @@ namespace goatgitter.lib
         /// Static Application Notepad Property for logging purposes.
         /// </summary>
         public static ILogger AppNotepad { get; set; }
+      
         static BaseWithLog()
         {
             if (AppNotepad.IsEmpty())
@@ -23,7 +24,6 @@ namespace goatgitter.lib
                 InitAppNotepad();
             }
         }
-
         private static void InitAppNotepad()
         {
             Type logType = new StackFrame(3).GetMethod().DeclaringType;
