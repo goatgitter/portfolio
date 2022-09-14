@@ -173,9 +173,14 @@
             Tests the Constructor
             </summary>
         </member>
-        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeGetFilePathTest">
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeGetFilePathTestForNoErrorNullResult(System.String,System.String,System.Boolean,System.Boolean)">
             <summary>
-            Tests the Constructor
+            Tests the SafeGetFilePath method for cases where there are no errors and the result is null.
+            </summary>
+        </member>
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeGetFilePathTestForNoErrorNotNullResult(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Tests the SafeGetFilePath method for cases where there are no errors and the result is not null.
             </summary>
         </member>
         <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeGetFilePathForInvalid">

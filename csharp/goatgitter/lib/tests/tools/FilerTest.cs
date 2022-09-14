@@ -115,84 +115,45 @@ namespace goatgitter.lib.tests.tools
         }
 
         /// <summary>
-        /// Tests the Constructor
+        /// Tests the SafeGetFilePath method for cases where there are no errors and the result is null.
         /// </summary>
         [Test]
-        public void SafeGetFilePathTest()
+        [TestCase(null, null, false, false)]
+        [TestCase(null, null, false, true)]
+        [TestCase(null, null, true, false)]
+        [TestCase(null, null, true, true)]
+
+        [TestCase(null, TEST_FILE_NAME, false, false)]
+        [TestCase(null, TEST_FILE_NAME, false, true)]
+        [TestCase(null, TEST_FILE_NAME, true, false)]
+        [TestCase(null, TEST_FILE_NAME, true, true)]
+
+        [TestCase(TEST_DIR_NAME, null, false, false)]
+        [TestCase(TEST_DIR_NAME, null, false, true)]
+        [TestCase(TEST_DIR_NAME, null, true, false)]
+        [TestCase(TEST_DIR_NAME, null, true, true)]
+
+        [TestCase(TEST_DIR_NAME, TEST_FILE_NAME, false, false)]
+        [TestCase(TEST_DIR_NAME, TEST_FILE_NAME, false, true)]
+        [TestCase(TEST_DIR_NAME, TEST_FILE_NAME, true, false)]
+        public void SafeGetFilePathTestForNoErrorNullResult(string folder, string fileName, bool createFolder = false, bool createFile = false)
         {
             testObj = new Filer(MockLogger.Object);
-            string folder = null;
-            string fileName = null;
-
-            // Null Folder, null File, Do NOT Create folder, Do NOT Create File
-            string result = testObj.SafeGetFilePath(folder, fileName, false, false);
+            string result = testObj.SafeGetFilePath(folder, fileName, createFolder, createFile);
             VerifyCreateDirNoErrorNullResult(result, folder);
+        }
 
-            // Null Folder, null File, Do NOT Create folder, Do Create File
-            result = testObj.SafeGetFilePath(folder, fileName, false, true);
-            VerifyCreateDirNoErrorNullResult(result, folder);
-
-            // Null Folder, null File, Do Create folder, Do NOT Create File
-            result = testObj.SafeGetFilePath(folder, fileName, true, false);
-            VerifyCreateDirNoErrorNullResult(result, folder);
-
-            // Null Folder, null File, Do Create folder, Do Create File
-            result = testObj.SafeGetFilePath(folder, fileName, true, true);
-            VerifyCreateDirNoErrorNullResult(result, folder);
-
-            // Null Folder, NOT null File, Do NOT Create folder, Do NOT Create File
-            fileName = TEST_FILE_NAME;
-            result = testObj.SafeGetFilePath(folder, fileName, false, false);
-            VerifyCreateDirNoErrorNullResult(result, folder);
-
-            // Null Folder, NOT null File, Do NOT Create folder, Do Create File
-            result = testObj.SafeGetFilePath(folder, fileName, false, true);
-            VerifyCreateDirNoErrorNullResult(result, folder);
-
-            // Null Folder, NOT null File, Do Create folder, Do NOT Create File
-            result = testObj.SafeGetFilePath(folder, fileName, true, false);
-            VerifyCreateDirNoErrorNullResult(result, folder);
-
-            // Null Folder, NOT null File, Do Create folder, Do Create File
-            result = testObj.SafeGetFilePath(folder, fileName, true, true);
-            VerifyCreateDirNoErrorNullResult(result, folder);
-
-            // NOT Null Folder, null File, Do NOT Create folder, Do NOT Create File
-            folder = TEST_DIR_NAME;
-            fileName = null;
-            result = testObj.SafeGetFilePath(folder, fileName, false, false);
-            VerifyCreateDirNoErrorNullResult(result, folder);
-
-            // NOT Null Folder, null File, Do NOT Create folder, Do Create File
-            result = testObj.SafeGetFilePath(folder, fileName, false, true);
-            VerifyCreateDirNoErrorNullResult(result, folder);
-
-            // NOT Null Folder, null File, Do Create folder, Do NOT Create File
-            result = testObj.SafeGetFilePath(folder, fileName, true, false);
-            VerifyCreateDirNoErrorNullResult(result, folder);
-
-            // NOT Null Folder, null File, Do Create folder, Do Create File
-            result = testObj.SafeGetFilePath(folder, fileName, true, true);
-            VerifyCreateDirNoErrorNullResult(result, folder);
-
-            // NOT Null Folder, NOT null File, Do NOT Create folder, Do NOT Create File
-            fileName = TEST_FILE_NAME;
-            result = testObj.SafeGetFilePath(folder, fileName, false, false);
-            VerifyCreateDirNoErrorNullResult(result, folder);
-
-            // NOT Null Folder, NOT null File, Do Create folder, Do NOT Create File
-            result = testObj.SafeGetFilePath(folder, fileName, true, false);
-            VerifyCreateDirNoErrorNullResult(result, folder);
-
-            // NOT Null Folder, NOT null File, Do NOT Create folder, Do Create File
-            result = testObj.SafeGetFilePath(folder, fileName, false, true);
-            VerifyCreateDirNoErrorNullResult(result, folder);
-
-            // NOT Null Folder, NOT null File, Do Create folder, Do Create File
-            result = testObj.SafeGetFilePath(folder, fileName, true, true);
+        /// <summary>
+        /// Tests the SafeGetFilePath method for cases where there are no errors and the result is not null.
+        /// </summary>
+        [Test]
+        [TestCase(TEST_DIR_NAME, TEST_FILE_NAME, true, true)]
+        public void SafeGetFilePathTestForNoErrorNotNullResult(string folder, string fileName, bool createFolder = false, bool createFile = false)
+        {
+            testObj = new Filer(MockLogger.Object);
+            string result = testObj.SafeGetFilePath(folder, fileName, createFolder, createFile);
             VerifyCreateDirError(folder, 0);
             Assert.IsNotNull(result);
-
             bool deleteResult = testObj.SafeDeleteFolder(folder);
             Assert.IsTrue(deleteResult);
         }

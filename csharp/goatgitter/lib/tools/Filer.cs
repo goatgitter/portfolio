@@ -201,7 +201,8 @@ namespace goatgitter.lib.tools
         public bool RetrieveFileForUpdate(string folder, string fileName)
         {
             bool result = false;
-            string filePath = SafeGetFilePath(folder, fileName, true, true);     
+            string filePath = SafeGetFilePath(folder, fileName, true, true);
+            result = filePath.IsNotEmpty();
             return result;
         }
     }
