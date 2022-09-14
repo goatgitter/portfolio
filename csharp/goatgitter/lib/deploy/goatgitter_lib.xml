@@ -197,9 +197,16 @@
             Tests the SafeCreateDirectory Method 
             </summary>
         </member>
-        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeDeleteFolderTest">
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeDeleteFolderTestNoErrorTrueResult(System.String,System.Boolean,System.Boolean,System.Boolean)">
             <summary>
-            Tests the SafeDeleteDirectory Method 
+            Tests the SafeDeleteFolder Method 
+            For cases where the method should not error and return a result of true.
+            </summary>
+        </member>
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeDeleteFolderTestErrorFalseResult(System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Tests the SafeDeleteFolder Method 
+            For cases where the method should error and return a result of false.
             </summary>
         </member>
         <member name="T:goatgitter.lib.tests.tools.LoggerTest">

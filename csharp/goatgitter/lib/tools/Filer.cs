@@ -126,7 +126,7 @@ namespace goatgitter.lib.tools
                     }
                     catch (Exception exception)
                     {
-                        Notepad.LogExceptionWithData(ERR_CREATE_DIR, new object[] { filePath }, exception);
+                        Notepad.LogExceptionWithData(ERR_CREATE_FILE, new object[] { filePath }, exception);
                     }
                 }
                 else
