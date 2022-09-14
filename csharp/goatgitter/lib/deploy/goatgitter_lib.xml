@@ -191,10 +191,16 @@
             There is one error and the result is null.
             </summary>
         </member>
-        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeCreateDirectoryTest(System.String)">
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeCreateDirectoryNoErrorsResultTrueTest(System.String)">
             <summary>
             Tests the SafeCreateDirectory Method for cases where:
             No Errors, and result is true
+            </summary>
+        </member>
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeCreateDirectoryNoErrorsResultFalseTest(System.String)">
+            <summary>
+            Tests the SafeCreateDirectory Method for cases where:
+            No Errors, and result is False
             </summary>
         </member>
         <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeCreateDirectoryForErrorTest(System.String)">

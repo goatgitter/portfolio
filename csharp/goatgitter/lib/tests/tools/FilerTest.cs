@@ -189,11 +189,28 @@ namespace goatgitter.lib.tests.tools
         /// </summary>
         [Test]
         [TestCase(TEST_DIR_NAME)]
-        public void SafeCreateDirectoryTest(string folder)
+        public void SafeCreateDirectoryNoErrorsResultTrueTest(string folder)
         {
             testObj = new Filer(MockLogger.Object);
             bool result = testObj.SafeCreateDirectory(folder);
             VerifyCreateDirNoErrorTrueResult(result, folder);
+
+            bool deleteResult = testObj.SafeDeleteFolder(folder);
+            Assert.IsTrue(deleteResult);
+        }
+
+        /// <summary>
+        /// Tests the SafeCreateDirectory Method for cases where:
+        /// No Errors, and result is False
+        /// </summary>
+        [Test]
+        [TestCase(null)]
+        public void SafeCreateDirectoryNoErrorsResultFalseTest(string folder)
+        {
+            testObj = new Filer(MockLogger.Object);
+            bool result = testObj.SafeCreateDirectory(folder);
+            VerifyCreateDirError(folder, 0);
+            Assert.IsFalse(result);
 
             bool deleteResult = testObj.SafeDeleteFolder(folder);
             Assert.IsTrue(deleteResult);
@@ -209,7 +226,7 @@ namespace goatgitter.lib.tests.tools
         {
             testObj = new Filer(MockLogger.Object);
             bool result = testObj.SafeCreateDirectory(folder);
-            VerifyCreateDirError(folder, 0);
+            VerifyCreateDirError(folder, 1);
             Assert.IsFalse(result);
 
             bool deleteResult = testObj.SafeDeleteFolder(folder);
