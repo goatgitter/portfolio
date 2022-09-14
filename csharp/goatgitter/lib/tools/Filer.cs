@@ -19,7 +19,7 @@ namespace goatgitter.lib.tools
         /// </summary>
         public Filer(ILogger notepad = null) : base(notepad: notepad)
         {
-            
+            Notepad.Started();
         }
 
         /// <summary>
@@ -36,19 +36,48 @@ namespace goatgitter.lib.tools
             {
                 if (!Directory.Exists(folder) && createFolder)
                 {
+                    SafeCreateDirectory(folder);
+                }
+                try
+                {
+                    string filePath = Path.Combine(folder, fileName);
+                    bool fileExists = File.Exists(filePath);
+                }
+                catch (Exception exception)
+                {
+                    Notepad.LogExceptionWithData(ERR_CREATE_DIR, new object[] { folder }, exception);
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Safely gets a Path object for the params specified.
+        /// </summary>
+        /// <param name="folder">The directory where the file resides.</param>
+        /// <returns></returns>
+        public bool SafeCreateDirectory(string folder)
+        {
+            bool result = false;
+            if (folder.IsNotEmpty())
+            {
+                if (!Directory.Exists(folder))
+                {
                     try
                     {
                         Directory.CreateDirectory(folder);
+                        result = true;
                     }
                     catch (Exception exception)
                     {
                         Notepad.LogExceptionWithData(ERR_CREATE_DIR, new object[] { folder }, exception);
                     }
                 }
-                if (File.Exists(fileName))
+                else
                 {
-                    result = Path.Combine(folder, fileName);
-                }                
+                    // Directory already exists.
+                    result = true;
+                }
             }
             return result;
         }

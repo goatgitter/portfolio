@@ -4,6 +4,7 @@ using goatgitter.lib.tools;
 using Moq;
 using System.Text;
 using goatgitter.lib.extensions;
+using static goatgitter.lib.Constants;
 
 namespace goatgitter.lib.tests.tools
 {
@@ -75,6 +76,41 @@ namespace goatgitter.lib.tests.tools
             testObj.LogError(TEST_NAME);
             MockLog.Verify(m => m.Error(It.Is<string>(s => s.Equals(TEST_NAME)))
            , Times.Exactly(1));
+        }
+
+        /// <summary>
+        /// Tests the LogException Method
+        /// </summary>
+        [Test]
+        public void LogExceptionTest()
+        {
+            testObj = new Logger(MockLog.Object);
+            Exception testException = GetTestExceptionWithInner();            
+            testObj.LogException(TEST_ERROR_MSG, testException);
+            MockLog.Verify(m => m.Error(It.Is<string>(s => s.Equals(TEST_ERROR_MSG)))
+           , Times.Exactly(1));
+            MockLog.Verify(m => m.Error(It.Is<string>(s => s.Equals(testException.LogPrint())))
+          , Times.Exactly(1));
+        }
+
+        /// <summary>
+        /// Tests the LogException Method
+        /// </summary>
+        [Test]
+        public void LogExceptionWithDataTest()
+        {
+            testObj = new Logger(MockLog.Object);
+            Exception testException = GetTestExceptionWithInner();
+            object[] messageData = new object[] {TEST_NAME, TEST_ID};
+            testObj.LogExceptionWithData(TEST_ERROR_MSG_WITH_DATA, messageData, testException);
+            MockLog.Verify(m => m.ErrorFormat(It.Is<string>(s => s.Equals(TEST_ERROR_MSG_WITH_DATA)),
+                It.Is<object[]>(arr => arr.Equals(messageData)))
+           , Times.Exactly(1));            
+            MockLog.Verify(m => m.Error(
+                It.Is<string>(s => s.Contains(ERR_OCCURRED)
+                && s.Contains(ERR_EXCEPTION_MSG)
+                && s.Contains(testException.LogPrint())))
+          , Times.Exactly(1));
         }
     }
 }

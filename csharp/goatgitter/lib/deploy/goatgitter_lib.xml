@@ -191,6 +191,16 @@
             This will generate an error that is logged and return a null result.
             </summary>
         </member>
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeCreateDirectoryTest">
+            <summary>
+            Tests the SafeCreateDirectory Method 
+            </summary>
+        </member>
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.SafeDeleteFolderTest">
+            <summary>
+            Tests the SafeDeleteDirectory Method 
+            </summary>
+        </member>
         <member name="T:goatgitter.lib.tests.tools.LoggerTest">
              MIT License
              Copyright (c) 2022 goatgitter
@@ -221,6 +231,16 @@
         <member name="M:goatgitter.lib.tests.tools.LoggerTest.LogErrorTest">
             <summary>
             Tests the LogError Method
+            </summary>
+        </member>
+        <member name="M:goatgitter.lib.tests.tools.LoggerTest.LogExceptionTest">
+            <summary>
+            Tests the LogException Method
+            </summary>
+        </member>
+        <member name="M:goatgitter.lib.tests.tools.LoggerTest.LogExceptionWithDataTest">
+            <summary>
+            Tests the LogException Method
             </summary>
         </member>
         <member name="T:goatgitter.lib.tests.BaseTest">
@@ -378,6 +398,13 @@
             <param name="folder">The directory where the file resides.</param>
             <param name="fileName">The name of the file to retrieve.</param>
             <param name="createFolder">A boolean that specifies if the folder should automatically be created if it does not exist.</param>
+            <returns></returns>
+        </member>
+        <member name="M:goatgitter.lib.tools.Filer.SafeCreateDirectory(System.String)">
+            <summary>
+            Safely gets a Path object for the params specified.
+            </summary>
+            <param name="folder">The directory where the file resides.</param>
             <returns></returns>
         </member>
         <member name="M:goatgitter.lib.tools.Filer.SafeDeleteFolder(System.String,System.Boolean)">

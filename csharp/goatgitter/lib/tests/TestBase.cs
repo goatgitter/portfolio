@@ -31,8 +31,11 @@ namespace goatgitter.lib.tests
         public const string TEST_FILE_NAME_DNE = "dne.txt";
         public const string TEST_FILE_NAME = "testFile.log";
         public const string TEST_DIR_NAME = "testData";
+        public const string TEST_DIR_DNE = "doesNotExist";
         public const string TEST_DIR_INVALID = "*+";
         public const string TEST_FILE_INVALID = "testFile*+";
+        public const string TEST_ERROR_MSG = "Test Error Message";
+        public const string TEST_ERROR_MSG_WITH_DATA = "Test Error Message data1-> {0}, data2-> {1}";
 
         // Base Logging
         protected Mock<ILogger> MockAppLogger = null;

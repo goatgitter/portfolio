@@ -1,8 +1,12 @@
 ﻿using goatgitter.lib.extensions;
 using log4net;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
 using System.Text;
+using static goatgitter.lib.Constants;
 
 namespace goatgitter.lib.tools
 {
@@ -119,8 +123,15 @@ namespace goatgitter.lib.tools
         /// <param name="exception">An exception contianing information to be logged.</param>
         public void LogExceptionWithData(string message, object[] messageData, Exception exception)
         {
+            string callingMethod = new StackFrame(1).GetMethod().Name;
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(ERR_OCCURRED);
+            sb.AppendIf(callingMethod);
+            sb.AppendLine("");
+            sb.AppendLine(ERR_EXCEPTION_MSG);
+            sb.AppendLineIf(exception?.LogPrint());
             Log.ErrorFormat(message, messageData);
-            Log.Error(exception?.LogPrint());
+            Log.Error(sb.ToString());
         }
     }
 }

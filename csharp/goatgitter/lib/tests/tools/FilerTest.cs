@@ -56,19 +56,43 @@ namespace goatgitter.lib.tests.tools
             Assert.AreEqual(testObj.GetType(), testObj.Notepad.LogType);
         }
 
-        private void VerifyErrorCreateDir(string folder, int numTimes)
+        private void VerifyCreateDirError(string folder, int numTimes)
         {
             MockLogger.Verify(m => m.LogExceptionWithData(It.Is<string>(s => s.Equals(ERR_CREATE_DIR)),
                 It.Is<object[]>(o => o.Contains<object>(folder)),
                 It.IsAny<Exception>()), Times.Exactly(numTimes));
         }
 
-        private void VerifyNoErrorNullResult(string result, string folder)
+        private void VerifyCreateDirNoErrorNullResult(string result, string folder)
         {
-            VerifyErrorCreateDir(folder, 0);
+            VerifyCreateDirError(folder, 0);
             Assert.IsNull(result);
         }
 
+        private void VerifyDeleteDirError(string folder, bool emptyFolder, int numTimes)
+        {
+            MockLogger.Verify(m => m.LogExceptionWithData(It.Is<string>(s => s.Equals(ERR_DELETE_DIR)),
+                It.Is<object[]>(o => o.Contains<object>(folder) && o.Contains<object>(emptyFolder)),
+                It.IsAny<Exception>()), Times.Exactly(numTimes));
+        }
+
+        private void VerifyDeleteDirNoErrorFalseResult(bool result, string folder, bool emptyFolder)
+        {
+            VerifyDeleteDirError(folder, emptyFolder, 0);
+            Assert.IsFalse(result);
+        }
+
+        private void VerifyCreateDirNoErrorTrueResult(bool result, string folder)
+        {
+            VerifyCreateDirError(folder, 0);
+            Assert.IsTrue(result);
+        }
+
+        private void VerifyDeleteDirNoErrorTrueResult(bool result, string folder, bool emptyFolder)
+        {
+            VerifyDeleteDirError(folder, emptyFolder, 0);
+            Assert.IsTrue(result);
+        }
 
         /// <summary>
         /// Tests the Constructor
@@ -83,39 +107,39 @@ namespace goatgitter.lib.tests.tools
             // Null Folder, null File, Do NOT Create folder
             
             string result = testObj.SafeGetFilePath(folder, fileName, false);
-            VerifyNoErrorNullResult(result, folder);
+            VerifyCreateDirNoErrorNullResult(result, folder);
 
             // Null Folder, null File, Do Create folder
             result = testObj.SafeGetFilePath(folder, fileName, true);
-            VerifyNoErrorNullResult(result, folder);
+            VerifyCreateDirNoErrorNullResult(result, folder);
 
             // Null Folder, NOT null File, Do NOT Create folder
             fileName = TEST_FILE_NAME;
             result = testObj.SafeGetFilePath(folder, fileName, false);
-            VerifyNoErrorNullResult(result, folder);
+            VerifyCreateDirNoErrorNullResult(result, folder);
 
             // Null Folder, NOT null File, Do Create folder
             result = testObj.SafeGetFilePath(folder, fileName, true);
-            VerifyNoErrorNullResult(result, folder);
+            VerifyCreateDirNoErrorNullResult(result, folder);
 
             // NOT Null Folder, null File, Do NOT Create folder
             folder = TEST_DIR_NAME;
             fileName = null;
             result = testObj.SafeGetFilePath(folder, fileName, false);
-            VerifyNoErrorNullResult(result, folder);
+            VerifyCreateDirNoErrorNullResult(result, folder);
 
             // NOT Null Folder, null File, Do Create folder
             result = testObj.SafeGetFilePath(folder, fileName, true);
-            VerifyNoErrorNullResult(result, folder);
+            VerifyCreateDirNoErrorNullResult(result, folder);
 
             // NOT Null Folder, NOT null File, Do NOT Create folder
             fileName = TEST_FILE_NAME;
             result = testObj.SafeGetFilePath(folder, fileName, false);
-            VerifyNoErrorNullResult(result, folder);
+            VerifyCreateDirNoErrorNullResult(result, folder);
 
             // NOT Null Folder, NOT null File, Do Create folder
             result = testObj.SafeGetFilePath(folder, fileName, true);
-            VerifyNoErrorNullResult(result, folder);
+            VerifyCreateDirNoErrorNullResult(result, folder);
 
             bool deleteResult = testObj.SafeDeleteFolder(folder);
             Assert.IsTrue(deleteResult);
@@ -132,7 +156,7 @@ namespace goatgitter.lib.tests.tools
         {
             testObj = new Filer(MockLogger.Object);
             string result = testObj.SafeGetFilePath(TEST_DIR_INVALID,TEST_FILE_NAME, true);
-            VerifyErrorCreateDir(TEST_DIR_INVALID, 1);
+            VerifyCreateDirError(TEST_DIR_INVALID, 1);
             Assert.IsNull(result);
         }
 
@@ -146,7 +170,85 @@ namespace goatgitter.lib.tests.tools
         {
             testObj = new Filer(MockLogger.Object);
             string result = testObj.SafeGetFilePath(TEST_DIR_NAME, TEST_FILE_INVALID, true);
-            VerifyNoErrorNullResult(result, TEST_DIR_NAME);
+            VerifyCreateDirNoErrorNullResult(result, TEST_DIR_NAME);
+        }
+
+        /// <summary>
+        /// Tests the SafeCreateDirectory Method 
+        /// </summary>
+        [Test]
+        public void SafeCreateDirectoryTest()
+        {
+            testObj = new Filer(MockLogger.Object);
+            string folder = TEST_DIR_NAME;
+            bool result = testObj.SafeCreateDirectory(folder);
+            VerifyCreateDirNoErrorTrueResult(result, folder);
+
+            bool deleteResult = testObj.SafeDeleteFolder(folder);
+            Assert.IsTrue(deleteResult);
+        }
+
+        /// <summary>
+        /// Tests the SafeDeleteDirectory Method 
+        /// </summary>
+        [Test]
+        public void SafeDeleteFolderTest()
+        {
+            testObj = new Filer(MockLogger.Object);
+            string folder = null;
+            bool emptyFolder = false;
+
+            // Null Folder,  Do NOT empty folder
+            bool result = testObj.SafeDeleteFolder(folder, emptyFolder);
+            VerifyDeleteDirNoErrorFalseResult(result, folder, emptyFolder);
+
+            // Null Folder, Do empty folder
+            emptyFolder = true;
+            result = testObj.SafeDeleteFolder(folder, emptyFolder);
+            VerifyDeleteDirNoErrorFalseResult(result, folder, emptyFolder);
+
+            // Folder does NOT exist, Do NOT empty folder
+            folder = TEST_DIR_DNE;
+            emptyFolder = false;
+            result = testObj.SafeDeleteFolder(folder, emptyFolder);
+            VerifyDeleteDirNoErrorFalseResult(result, folder, emptyFolder);
+
+            // Folder does NOT exist, Do empty folder
+            emptyFolder = true;
+            result = testObj.SafeDeleteFolder(folder, emptyFolder);
+            VerifyDeleteDirNoErrorFalseResult(result, folder, emptyFolder);
+
+            // Folder does exist, and is empty, Do NOT empty folder
+            folder = TEST_DIR_NAME;
+            bool createDirResult = testObj.SafeCreateDirectory(folder);
+            VerifyCreateDirNoErrorTrueResult(createDirResult, folder);
+            emptyFolder = false;
+
+            result = testObj.SafeDeleteFolder(folder, emptyFolder);
+            VerifyDeleteDirNoErrorTrueResult(result, folder, emptyFolder);
+
+            // Folder does exist, and is empty, Do empty folder
+            createDirResult = testObj.SafeCreateDirectory(folder);
+            VerifyCreateDirNoErrorTrueResult(createDirResult, folder);
+            emptyFolder = true;
+
+            result = testObj.SafeDeleteFolder(folder, emptyFolder);
+            VerifyDeleteDirNoErrorTrueResult(result, folder, emptyFolder);
+
+            // Folder does exist, and is NOT empty, Do NOT empty folder
+            createDirResult = testObj.SafeCreateDirectory(folder);
+            VerifyCreateDirNoErrorTrueResult(createDirResult, folder);
+            emptyFolder = false;
+            result = testObj.SafeDeleteFolder(folder, emptyFolder);
+            VerifyDeleteDirNoErrorTrueResult(result, folder, emptyFolder);
+
+            // Folder does exist, and is NOT empty, Do empty folder
+            createDirResult = testObj.SafeCreateDirectory(folder);
+            VerifyCreateDirNoErrorTrueResult(createDirResult, folder);
+            emptyFolder = true;
+            result = testObj.SafeDeleteFolder(folder, emptyFolder);
+            VerifyDeleteDirNoErrorTrueResult(result, folder, emptyFolder);
+
         }
 
     }
