@@ -114,7 +114,7 @@ namespace goatgitter.lib.tools
         public bool SafeCreateFile(string filePath)
         {
             bool result = false;
-            if (filePath.IsNotEmpty())
+            if (filePath.IsValidFileName() && filePath.IsValidDirName())
             {
                 if (!File.Exists(filePath))
                 {
