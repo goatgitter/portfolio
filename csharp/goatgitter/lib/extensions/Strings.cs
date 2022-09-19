@@ -69,7 +69,13 @@ namespace goatgitter.lib.extensions
             return isValid;
         }
 
-        /// <inheritdoc/>
+        
+        /// <summary>
+        /// Method to check if a string contains a valid directory name.
+        /// </summary>
+        /// <param name="str">The string to be validated.</param>
+        /// <param name="notepad">A logger to log any exceptions encountered.</param>
+        /// <returns></returns>
         public static bool IsValidDirName(this string str, ILogger notepad = null)
         {
             bool isValid = false;
@@ -98,5 +104,7 @@ namespace goatgitter.lib.extensions
             }
             return isValid;
         }
+
+
     }
 }

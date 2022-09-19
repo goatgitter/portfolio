@@ -134,7 +134,12 @@
             <inheritdoc/>
         </member>
         <member name="M:goatgitter.lib.extensions.Strings.IsValidDirName(System.String,goatgitter.lib.tools.ILogger)">
-            <inheritdoc/>
+            <summary>
+            Method to check if a string contains a valid directory name.
+            </summary>
+            <param name="str">The string to be validated.</param>
+            <param name="notepad">A logger to log any exceptions encountered.</param>
+            <returns></returns>
         </member>
         <member name="T:goatgitter.lib.tests.BaseWithLogTest">
             BaseWithLogTest class Tests the BaseWithLog class.
@@ -440,7 +445,7 @@
         </member>
         <member name="M:goatgitter.lib.tests.extensions.StringsTest.IsValidDirNameTest(System.String,System.Boolean,System.Int32)">
             <summary>
-            Tests the IsValidFileName method
+            Tests the IsValidDirName method
             </summary>
             <param name="val">A string containing the value to be validated.</param>
             <param name="expectedResult">A bool representing the expected result from the method.</param>

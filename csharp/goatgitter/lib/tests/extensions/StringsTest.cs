@@ -95,7 +95,6 @@ namespace goatgitter.lib.tests.extensions
             Assert.AreEqual(expectedResult, result);
         }
 
-
         /// <summary>
         /// Tests the IsValidDirName method
         /// </summary>
