@@ -139,7 +139,15 @@
             </summary>
             <param name="str">The string to be validated.</param>
             <param name="notepad">A logger to log any exceptions encountered.</param>
-            <returns></returns>
+            <returns>A boolean indicating if the string is a valid directory name.</returns>
+        </member>
+        <member name="M:goatgitter.lib.extensions.Strings.IsValidDirAndFileName(System.String,goatgitter.lib.tools.ILogger)">
+            <summary>
+            Method that checks if a string contains a valid directory and file name.
+            </summary>
+            <param name="str">A string to validate.</param>
+            <param name="notepad">Optional logger to log exceptions.</param>
+            <returns>bool</returns>
         </member>
         <member name="T:goatgitter.lib.tests.BaseWithLogTest">
             BaseWithLogTest class Tests the BaseWithLog class.

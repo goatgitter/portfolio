@@ -120,7 +120,7 @@ namespace goatgitter.lib.tools
         public bool SafeCreateFile(string filePath)
         {
             bool result = false;
-            if (filePath.IsValidFileName() && filePath.IsValidDirName())
+            if (filePath.IsValidDirAndFileName())
             {
                 if (!File.Exists(filePath))
                 {

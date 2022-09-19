@@ -3,6 +3,7 @@ using log4net;
 using System;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using static goatgitter.lib.Constants;
 
 namespace goatgitter.lib.extensions
@@ -68,14 +69,13 @@ namespace goatgitter.lib.extensions
             }
             return isValid;
         }
-
         
         /// <summary>
         /// Method to check if a string contains a valid directory name.
         /// </summary>
         /// <param name="str">The string to be validated.</param>
         /// <param name="notepad">A logger to log any exceptions encountered.</param>
-        /// <returns></returns>
+        /// <returns>A boolean indicating if the string is a valid directory name.</returns>
         public static bool IsValidDirName(this string str, ILogger notepad = null)
         {
             bool isValid = false;
@@ -104,7 +104,16 @@ namespace goatgitter.lib.extensions
             }
             return isValid;
         }
-
-
+        /// <summary>
+        /// Method that checks if a string contains a valid directory and file name.
+        /// </summary>
+        /// <param name="str">A string to validate.</param>
+        /// <param name="notepad">Optional logger to log exceptions.</param>
+        /// <returns>bool</returns>
+        public static bool IsValidDirAndFileName(this string str, ILogger notepad = null)
+        {
+            bool isValid = IsValidDirName(str, notepad) && IsValidFileName(str, notepad);
+            return isValid;
+        }
     }
 }
