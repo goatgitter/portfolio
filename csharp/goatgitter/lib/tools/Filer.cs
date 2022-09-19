@@ -22,6 +22,12 @@ namespace goatgitter.lib.tools
             Notepad.Started();
         }
 
+
+        /// <summary>
+        /// Gets the full path of the current application combined with a folder name.
+        /// </summary>
+        /// <param name="folder">a string containing the folder name.</param>
+        /// <returns></returns>
         public string GetAppPathFolder(string folder)
         {
             string dirPath = null;

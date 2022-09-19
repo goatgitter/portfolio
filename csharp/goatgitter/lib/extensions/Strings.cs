@@ -1,4 +1,6 @@
-﻿using System;
+﻿using goatgitter.lib.tools;
+using log4net;
+using System;
 using System.IO;
 using System.Linq;
 using static goatgitter.lib.Constants;
@@ -12,7 +14,7 @@ namespace goatgitter.lib.extensions
     * Copyright (c) 2022 goatgitter
     * */
 
-    public static class Strings
+    public static class Strings 
     {
         /// <inheritdoc/>
         public static int WordCount(this string str)
@@ -39,7 +41,7 @@ namespace goatgitter.lib.extensions
         }
 
         /// <inheritdoc/>
-        public static bool IsValidFileName(this string str)
+        public static bool IsValidFileName(this string str, ILogger notepad = null)
         {
             bool isValid = false;
             if (str.IsNotEmpty() )
@@ -60,7 +62,8 @@ namespace goatgitter.lib.extensions
                 }
                 catch (Exception exception)
                 {
-                    BaseWithLog.AppNotepad.LogExceptionWithData(ERR_VALID_FILE_NAME, new object[] {str}, exception);
+                    ILogger logger = notepad ?? str.GetLog();
+                    logger.LogExceptionWithData(ERR_VALID_FILE_NAME, new object[] { str }, exception);
                 }
             }
             return isValid;
@@ -89,7 +92,7 @@ namespace goatgitter.lib.extensions
                 }
                 catch (Exception exception)
                 {
-                    BaseWithLog.AppNotepad.LogExceptionWithData(ERR_VALID_FILE_NAME, new object[] { str }, exception);
+                    str.GetLog().LogExceptionWithData(ERR_VALID_FILE_NAME, new object[] { str }, exception);
                 }
             }
             return isValid;

@@ -13,7 +13,7 @@ namespace goatgitter.lib
     * */
     public class Base
     {
-        // <summary>
+        /// <summary>
         /// Static Application Path for File Input/Output purposes.
         /// </summary>
         public static string AppPath { get; set; }

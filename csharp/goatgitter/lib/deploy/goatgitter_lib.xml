@@ -10,7 +10,11 @@
             Copyright (c) 2022 goatgitter
             
         </member>
-        <!-- Badly formed XML comment ignored for member "P:goatgitter.lib.Base.AppPath" -->
+        <member name="P:goatgitter.lib.Base.AppPath">
+            <summary>
+            Static Application Path for File Input/Output purposes.
+            </summary>
+        </member>
         <member name="M:goatgitter.lib.Base.Equals(System.Object)">
             <inheritdoc/>
         </member>
@@ -78,6 +82,15 @@
             Copyright (c) 2022 goatgitter
             
         </member>
+        <member name="M:goatgitter.lib.extensions.Objects.GetLog(System.Object,log4net.ILog)">
+            <summary>
+            Gets the static logger.
+            If the Notepad is empty, it is created.
+            </summary>
+            <param name="obj"></param>
+            <param name="log"></param>
+            <returns></returns>
+        </member>
         <member name="M:goatgitter.lib.extensions.Objects.SafeToString(System.Object)">
             <inheritdoc/>
         </member>
@@ -117,7 +130,7 @@
         <member name="M:goatgitter.lib.extensions.Strings.IsNotEmpty(System.String)">
             <inheritdoc/>
         </member>
-        <member name="M:goatgitter.lib.extensions.Strings.IsValidFileName(System.String)">
+        <member name="M:goatgitter.lib.extensions.Strings.IsValidFileName(System.String,goatgitter.lib.tools.ILogger)">
             <inheritdoc/>
         </member>
         <member name="M:goatgitter.lib.extensions.Strings.IsValidDirName(System.String)">
@@ -408,13 +421,19 @@
         <member name="M:goatgitter.lib.tests.extensions.StringsTest.CleanupTest">
             <inheritdoc/>
         </member>
-        <member name="M:goatgitter.lib.tests.extensions.StringsTest.IsEmptyTest">
+        <member name="M:goatgitter.lib.tests.extensions.StringsTest.IsEmptyTest(System.String,System.Boolean)">
             <inheritdoc/>
         </member>
-        <member name="M:goatgitter.lib.tests.extensions.StringsTest.IsNotEmptyTest">
+        <member name="M:goatgitter.lib.tests.extensions.StringsTest.IsNotEmptyTest(System.String,System.Boolean)">
             <inheritdoc/>
         </member>
-        <member name="M:goatgitter.lib.tests.extensions.StringsTest.WordCountTest">
+        <member name="M:goatgitter.lib.tests.extensions.StringsTest.WordCountTest(System.String,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.StringsTest.IsValidFileNameTest(System.String,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.StringsTest.IsValidFileNameTestForError(System.String)">
             <inheritdoc/>
         </member>
         <member name="T:goatgitter.lib.tests.TestBase">
@@ -434,6 +453,13 @@
             Constructor for the Filer Class.
             Filers come equiped with a Notepad to record details it might need later.
             </summary>
+        </member>
+        <member name="M:goatgitter.lib.tools.Filer.GetAppPathFolder(System.String)">
+            <summary>
+            Gets the full path of the current application combined with a folder name.
+            </summary>
+            <param name="folder">a string containing the folder name.</param>
+            <returns></returns>
         </member>
         <member name="M:goatgitter.lib.tools.Filer.SafeGetFilePath(System.String,System.String,System.Boolean,System.Boolean)">
             <summary>

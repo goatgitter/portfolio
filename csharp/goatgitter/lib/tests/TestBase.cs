@@ -36,6 +36,7 @@ namespace goatgitter.lib.tests
         public const string TEST_FILE_INVALID = "testFile*+";
         public const string TEST_ERROR_MSG = "Test Error Message";
         public const string TEST_ERROR_MSG_WITH_DATA = "Test Error Message data1-> {0}, data2-> {1}";
+        public const string TEST_INVALID_FILE_NAME_ERR_VAL = "<doesNotExist/blah.txt";
 
         // Base Logging
         protected Mock<ILogger> MockAppLogger = null;

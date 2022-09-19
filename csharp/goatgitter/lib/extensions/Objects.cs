@@ -1,5 +1,6 @@
 ﻿using System;
 using goatgitter.lib.tools;
+using log4net;
 
 namespace goatgitter.lib.extensions
 {
@@ -12,16 +13,29 @@ namespace goatgitter.lib.extensions
     public static class Objects
     {
         private static Logger Notepad { get; set; }
-        static Logger GetLog(this object obj)
+        /// <summary>
+        /// Gets the static logger.
+        /// If the Notepad is empty, it is created.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="log"></param>
+        /// <returns></returns>
+        public static Logger GetLog(this object obj, ILog log = null)
         {
             if (obj.IsNotEmpty())
             {
                 if (Notepad.IsEmpty())
                 {
-                    Notepad = new Logger(null, obj.GetType());
+                    Notepad = new Logger(log, obj.GetType());
                 }
             }
             return Notepad;
+        }
+
+        public static void LogExceptionWithData(this object obj, string msg, object[] data, Exception exception, ILog log = null)
+        {
+            Logger notepad = GetLog(obj, log);
+            notepad.LogExceptionWithData(msg, data, exception);
         }
 
         /// <inheritdoc/>
