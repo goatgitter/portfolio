@@ -82,7 +82,7 @@
             Copyright (c) 2022 goatgitter
             
         </member>
-        <member name="M:goatgitter.lib.extensions.Objects.GetLog(System.Object,log4net.ILog)">
+        <member name="M:goatgitter.lib.extensions.Objects.GetLog(System.Object,log4net.ILog,goatgitter.lib.tools.ILogger)">
             <summary>
             Gets the static logger.
             If the Notepad is empty, it is created.
@@ -133,7 +133,7 @@
         <member name="M:goatgitter.lib.extensions.Strings.IsValidFileName(System.String,goatgitter.lib.tools.ILogger)">
             <inheritdoc/>
         </member>
-        <member name="M:goatgitter.lib.extensions.Strings.IsValidDirName(System.String)">
+        <member name="M:goatgitter.lib.extensions.Strings.IsValidDirName(System.String,goatgitter.lib.tools.ILogger)">
             <inheritdoc/>
         </member>
         <member name="T:goatgitter.lib.tests.BaseWithLogTest">
@@ -430,11 +430,21 @@
         <member name="M:goatgitter.lib.tests.extensions.StringsTest.WordCountTest(System.String,System.Int32)">
             <inheritdoc/>
         </member>
-        <member name="M:goatgitter.lib.tests.extensions.StringsTest.IsValidFileNameTest(System.String,System.Boolean)">
-            <inheritdoc/>
+        <member name="M:goatgitter.lib.tests.extensions.StringsTest.IsValidFileNameTest(System.String,System.Boolean,System.Int32)">
+            <summary>
+            Tests the IsValidFileName method
+            </summary>
+            <param name="val">A string containing the value to be validated.</param>
+            <param name="expectedResult">A bool representing the expected result from the method.</param>
+            <param name="errorsExpected">An integer representing the number of expected errors to result from calling the method.</param>
         </member>
-        <member name="M:goatgitter.lib.tests.extensions.StringsTest.IsValidFileNameTestForError(System.String)">
-            <inheritdoc/>
+        <member name="M:goatgitter.lib.tests.extensions.StringsTest.IsValidDirNameTest(System.String,System.Boolean,System.Int32)">
+            <summary>
+            Tests the IsValidFileName method
+            </summary>
+            <param name="val">A string containing the value to be validated.</param>
+            <param name="expectedResult">A bool representing the expected result from the method.</param>
+            <param name="errorsExpected">An integer representing the number of expected errors to result from calling the method.</param>
         </member>
         <member name="T:goatgitter.lib.tests.TestBase">
             TestBase class from which other Test classes will inherit.

@@ -70,7 +70,7 @@ namespace goatgitter.lib.extensions
         }
 
         /// <inheritdoc/>
-        public static bool IsValidDirName(this string str)
+        public static bool IsValidDirName(this string str, ILogger notepad = null)
         {
             bool isValid = false;
             if (str.IsNotEmpty())
@@ -92,7 +92,8 @@ namespace goatgitter.lib.extensions
                 }
                 catch (Exception exception)
                 {
-                    str.GetLog().LogExceptionWithData(ERR_VALID_FILE_NAME, new object[] { str }, exception);
+                    ILogger logger = notepad ?? str.GetLog();
+                    logger.LogExceptionWithData(ERR_VALID_DIR_NAME, new object[] { str }, exception);
                 }
             }
             return isValid;

@@ -69,7 +69,12 @@ namespace goatgitter.lib.tests.extensions
             Assert.AreEqual(expectedResult, result);
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Tests the IsValidFileName method
+        /// </summary>
+        /// <param name="val">A string containing the value to be validated.</param>
+        /// <param name="expectedResult">A bool representing the expected result from the method.</param>
+        /// <param name="errorsExpected">An integer representing the number of expected errors to result from calling the method.</param>
         [Test]
         [TestCase(null, false)]
         [TestCase(TEST_ALL_SPACES_STR, false)]
@@ -77,29 +82,42 @@ namespace goatgitter.lib.tests.extensions
         [TestCase(TEST_TRAILING_SPACES_STR, true)]
         [TestCase(TEST_HAS_PERIODS_STR, true)]
         [TestCase(TEST_FILE_NAME, true)]
-        [TestCase(TEST_FILE_INVALID, false)]        
-        public void IsValidFileNameTest(string val, bool expectedResult)
+        [TestCase(TEST_FILE_INVALID, false)]
+        [TestCase(TEST_INVALID_FILE_NAME_ERR_VAL, false, 1)]
+        public void IsValidFileNameTest(string val, bool expectedResult = false, int errorsExpected = 0)
         {
             
             bool result = val.IsValidFileName(MockAppLogger.Object);
             MockAppLogger.Verify(m => m.LogExceptionWithData(
                     It.Is<string>(s => s.Equals(ERR_VALID_FILE_NAME)),
                     It.Is<object[]>(o => o.Contains<object>(val)),
-                    It.IsAny<Exception>()), Times.Exactly(0));
+                    It.IsAny<Exception>()), Times.Exactly(errorsExpected));
             Assert.AreEqual(expectedResult, result);
         }
 
-        /// <inheritdoc/>
+
+        /// <summary>
+        /// Tests the IsValidDirName method
+        /// </summary>
+        /// <param name="val">A string containing the value to be validated.</param>
+        /// <param name="expectedResult">A bool representing the expected result from the method.</param>
+        /// <param name="errorsExpected">An integer representing the number of expected errors to result from calling the method.</param>
         [Test]
-        [TestCase(TEST_INVALID_FILE_NAME_ERR_VAL)]
-        public void IsValidFileNameTestForError(string val)
+        [TestCase(null, false)]
+        [TestCase(TEST_ALL_SPACES_STR, false)]
+        [TestCase(TEST_LEADING_SPACES_STR, true)]
+        [TestCase(TEST_TRAILING_SPACES_STR, true)]
+        [TestCase(TEST_HAS_PERIODS_STR, true)]
+        [TestCase(TEST_DIR_NAME, true)]
+        [TestCase(TEST_DIR_INVALID, false)]
+        public void IsValidDirNameTest(string val, bool expectedResult = false, int errorsExpected = 0)
         {
-            bool result = val.IsValidFileName(MockAppLogger.Object);
+            bool result = val.IsValidDirName(MockAppLogger.Object);
             MockAppLogger.Verify(m => m.LogExceptionWithData(
-                    It.Is<string>(s => s.Equals(ERR_VALID_FILE_NAME)),
+                    It.Is<string>(s => s.Equals(ERR_VALID_DIR_NAME)),
                     It.Is<object[]>(o => o.Contains<object>(val)),
-                    It.IsAny<Exception>()), Times.Exactly(1));          
-            Assert.IsFalse(result);
+                    It.IsAny<Exception>()), Times.Exactly(errorsExpected));
+            Assert.AreEqual(expectedResult, result);
         }
     }
 }
