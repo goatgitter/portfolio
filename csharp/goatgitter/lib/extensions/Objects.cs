@@ -17,8 +17,9 @@ namespace goatgitter.lib.extensions
         /// Gets the static logger.
         /// If the Notepad is empty, it is created.
         /// </summary>
-        /// <param name="obj"></param>
-        /// <param name="log"></param>
+        /// <param name="obj">An object to retrieve the log for.</param>
+        /// <param name="log">An optional ILog to retrieve the log for.</param>
+        /// <param name="logger">An optional ILoggger to retrieve the log for.</param>
         /// <returns></returns>
         public static ILogger GetLog(this object obj, ILog log = null, ILogger logger = null)
         {
@@ -39,6 +40,14 @@ namespace goatgitter.lib.extensions
             return Notepad;
         }
 
+        /// <summary>
+        /// Logs detailed information about an exception to the log.
+        /// </summary>
+        /// <param name="obj">An object with a log to be updated.</param>
+        /// <param name="msg">An application message to assist with support debugging.</param>
+        /// <param name="data">And array of objects containing data for the message.</param>
+        /// <param name="exception">An Exception with details to log.</param>
+        /// <param name="log">An optional ILog to update.</param>
         public static void LogExceptionWithData(this object obj, string msg, object[] data, Exception exception, ILog log = null)
         {
             ILogger notepad = GetLog(obj, log);

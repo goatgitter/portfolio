@@ -69,6 +69,11 @@ namespace goatgitter.lib
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Generic method for performing deep clone on an object that inherits from Base.
+        /// </summary>
+        /// <typeparam name="T">The Type of object being cloned.</typeparam>
+        /// <returns>An object of the specified type with all the data from the source object set.</returns>
         public T Clone<T>()
         {
             object clone = this.MemberwiseClone();

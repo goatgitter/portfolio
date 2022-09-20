@@ -10,15 +10,50 @@ using static goatgitter.lib.Constants;
 
 namespace goatgitter.lib.tools
 {
+    /// <summary>
+    /// An interface for the Logger.
+    /// </summary>
     public interface ILogger
     {
+        /// <summary>
+        /// The Log4Net Log
+        /// </summary>
         ILog Log { get; set; }
+        /// <summary>
+        /// The Type that will be printed in the Log4Net Log Messages.
+        /// </summary>
         Type LogType { get; set; }
+        /// <summary>
+        /// Logs a message to the Log at the Info Level that the logging has Started.
+        /// </summary>
         void Started();
+        /// <summary>
+        /// Logs a message to the Log at the Info Level.
+        /// </summary>
+        /// <param name="info">A string containing the message to be logged.</param>
         void LogInfo(string info);
+        /// <summary>
+        /// Logs a message to the Log at the Error Level.
+        /// </summary>
+        /// <param name="error">A string containing the message to be logged.</param>
         void LogError(string error);
+        /// <summary>
+        /// Logs a message to the Log at the Warning Level.
+        /// </summary>
+        /// <param name="warning">A string containing the message to be logged.</param>
         void LogWarn(string warning);
+        /// <summary>
+        /// Logs a message to the Log at the Error Level.
+        /// </summary>
+        /// <param name="message">A string containing the message to be logged.</param>
+        /// <param name="exception">An exception contianing information to be logged.</param>
         void LogException(string message, Exception exception);
+        /// <summary>
+        /// Logs a message with data to the Log at the Error Level.
+        /// </summary>
+        /// <param name="message">A string containing the message to be logged.</param>
+        /// <param name="messageData">An array of objects containing the data for the message to be logged.</param>
+        /// <param name="exception">An exception contianing information to be logged.</param>
         void LogExceptionWithData(string message, object[] messageData, Exception exception);
     }
 
@@ -61,9 +96,8 @@ namespace goatgitter.lib.tools
         }
 
         /// <summary>
-        /// Logs a message to the Log at the Info Level that <> Started.
+        /// Logs a message to the Log at the Info Level that the logging has Started.
         /// </summary>
-        /// <param name="info">A string containing the message to be logged.</param>
         public void Started()
         {
             StringBuilder sb = new StringBuilder();
@@ -113,7 +147,6 @@ namespace goatgitter.lib.tools
             Log.Error(message);
             Log.Error(exception?.LogPrint());
         }
-
 
         /// <summary>
         /// Logs a message with data to the Log at the Error Level.

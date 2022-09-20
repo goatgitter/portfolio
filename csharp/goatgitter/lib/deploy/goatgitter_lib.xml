@@ -24,6 +24,13 @@
         <member name="M:goatgitter.lib.Base.ToString">
             <inheritdoc/>
         </member>
+        <member name="M:goatgitter.lib.Base.Clone``1">
+            <summary>
+            Generic method for performing deep clone on an object that inherits from Base.
+            </summary>
+            <typeparam name="T">The Type of object being cloned.</typeparam>
+            <returns>An object of the specified type with all the data from the source object set.</returns>
+        </member>
         <member name="T:goatgitter.lib.BaseWithLog">
             Base class with Logging from which other classes will inherit.
             MIT License
@@ -87,9 +94,20 @@
             Gets the static logger.
             If the Notepad is empty, it is created.
             </summary>
-            <param name="obj"></param>
-            <param name="log"></param>
+            <param name="obj">An object to retrieve the log for.</param>
+            <param name="log">An optional ILog to retrieve the log for.</param>
+            <param name="logger">An optional ILoggger to retrieve the log for.</param>
             <returns></returns>
+        </member>
+        <member name="M:goatgitter.lib.extensions.Objects.LogExceptionWithData(System.Object,System.String,System.Object[],System.Exception,log4net.ILog)">
+            <summary>
+            Logs detailed information about an exception to the log.
+            </summary>
+            <param name="obj">An object with a log to be updated.</param>
+            <param name="msg">An application message to assist with support debugging.</param>
+            <param name="data">And array of objects containing data for the message.</param>
+            <param name="exception">An Exception with details to log.</param>
+            <param name="log">An optional ILog to update.</param>
         </member>
         <member name="M:goatgitter.lib.extensions.Objects.SafeToString(System.Object)">
             <inheritdoc/>
@@ -157,6 +175,28 @@
         </member>
         <member name="T:goatgitter.lib.tests.BaseWithLogTest.TestClass">
             <inheritdoc/>
+        </member>
+        <member name="P:goatgitter.lib.tests.BaseWithLogTest.TestClass.Id">
+            <summary>
+            An int representing a unique record.
+            </summary>
+        </member>
+        <member name="P:goatgitter.lib.tests.BaseWithLogTest.TestClass.Name">
+            <summary>
+            A string containing a name for this class.
+            </summary>
+        </member>
+        <member name="M:goatgitter.lib.tests.BaseWithLogTest.TestClass.#ctor(goatgitter.lib.tools.ILogger,goatgitter.lib.tools.ILogger)">
+            <summary>
+            Constructor for the TestClass object.
+            </summary>
+            <param name="appNotepad"></param>
+            <param name="notepad"></param>
+        </member>
+        <member name="F:goatgitter.lib.tests.BaseWithLogTest.testClassObj">
+            <summary>
+            An instance of the Test Class to be tested.
+            </summary>
         </member>
         <member name="M:goatgitter.lib.tests.BaseWithLogTest.SetupTest">
             <inheritdoc/>
@@ -330,6 +370,21 @@
         <member name="T:goatgitter.lib.tests.BaseTest.TestClass">
             <inheritdoc/>
         </member>
+        <member name="P:goatgitter.lib.tests.BaseTest.TestClass.Id">
+            <summary>
+            An int representing a unique record.
+            </summary>
+        </member>
+        <member name="P:goatgitter.lib.tests.BaseTest.TestClass.Name">
+            <summary>
+            A string containing a name for this class.
+            </summary>
+        </member>
+        <member name="F:goatgitter.lib.tests.BaseTest.testClassObj">
+            <summary>
+            An instance of the Test Class to be tested.
+            </summary>
+        </member>
         <member name="M:goatgitter.lib.tests.BaseTest.SetupTest">
             <inheritdoc/>
         </member>
@@ -473,6 +528,50 @@
             Copyright (c) 2022 goatgitter
             
         </member>
+        <member name="M:goatgitter.lib.tests.TestBase.SetupMocks">
+            <summary>
+            A common method to be called to setup common mock objects for unit tests.
+            </summary>
+        </member>
+        <member name="M:goatgitter.lib.tests.TestBase.ResetMocks">
+            <summary>
+            A common method to be called to reset common mock objects for unit tests.
+            </summary>
+        </member>
+        <member name="M:goatgitter.lib.tests.TestBase.VerifyStarted(System.Type,System.Int32)">
+            <summary>
+            Verifies that the Started Message was logged at the info level.
+            </summary>
+            <param name="logType">Type of the log.</param>
+            <param name="numTimes">Integer representing the number of times the log should have been updated.</param>
+        </member>
+        <member name="M:goatgitter.lib.tests.TestBase.CreateTestInnerException">
+            <summary>
+            A method to create a Test Exception with the Inner Exception Message and Source.
+            </summary>
+        </member>
+        <member name="M:goatgitter.lib.tests.TestBase.CreateTestExceptionWithInner">
+            <summary>
+            A method to create a Test Exception with an Inner Exception.
+            </summary>
+        </member>
+        <member name="M:goatgitter.lib.tests.TestBase.GetTestExceptionWithInner">
+            <summary>
+            A method to generate a Test Exception with an Inner Exception.
+            </summary>
+            <returns>An Exception</returns>
+        </member>
+        <member name="M:goatgitter.lib.tests.TestBase.CreateTestException">
+            <summary>
+            A method to create a Test Exception without an Inner Exception.
+            </summary>
+        </member>
+        <member name="M:goatgitter.lib.tests.TestBase.GetTestException">
+            <summary>
+            A method to generate a Test Exception without an Inner Exception.
+            </summary>
+            <returns>An Exception</returns>
+        </member>
         <member name="T:goatgitter.lib.tools.Filer">
             Utility class Filer gracefully handles File Input and Output Operations.
             MIT License
@@ -532,6 +631,59 @@
             <param name="fileName">The name of the file to retrieve for update.</param>
             <returns>FileStream result</returns>
         </member>
+        <member name="T:goatgitter.lib.tools.ILogger">
+            <summary>
+            An interface for the Logger.
+            </summary>
+        </member>
+        <member name="P:goatgitter.lib.tools.ILogger.Log">
+            <summary>
+            The Log4Net Log
+            </summary>
+        </member>
+        <member name="P:goatgitter.lib.tools.ILogger.LogType">
+            <summary>
+            The Type that will be printed in the Log4Net Log Messages.
+            </summary>
+        </member>
+        <member name="M:goatgitter.lib.tools.ILogger.Started">
+            <summary>
+            Logs a message to the Log at the Info Level that the logging has Started.
+            </summary>
+        </member>
+        <member name="M:goatgitter.lib.tools.ILogger.LogInfo(System.String)">
+            <summary>
+            Logs a message to the Log at the Info Level.
+            </summary>
+            <param name="info">A string containing the message to be logged.</param>
+        </member>
+        <member name="M:goatgitter.lib.tools.ILogger.LogError(System.String)">
+            <summary>
+            Logs a message to the Log at the Error Level.
+            </summary>
+            <param name="error">A string containing the message to be logged.</param>
+        </member>
+        <member name="M:goatgitter.lib.tools.ILogger.LogWarn(System.String)">
+            <summary>
+            Logs a message to the Log at the Warning Level.
+            </summary>
+            <param name="warning">A string containing the message to be logged.</param>
+        </member>
+        <member name="M:goatgitter.lib.tools.ILogger.LogException(System.String,System.Exception)">
+            <summary>
+            Logs a message to the Log at the Error Level.
+            </summary>
+            <param name="message">A string containing the message to be logged.</param>
+            <param name="exception">An exception contianing information to be logged.</param>
+        </member>
+        <member name="M:goatgitter.lib.tools.ILogger.LogExceptionWithData(System.String,System.Object[],System.Exception)">
+            <summary>
+            Logs a message with data to the Log at the Error Level.
+            </summary>
+            <param name="message">A string containing the message to be logged.</param>
+            <param name="messageData">An array of objects containing the data for the message to be logged.</param>
+            <param name="exception">An exception contianing information to be logged.</param>
+        </member>
         <member name="T:goatgitter.lib.tools.Logger">
             Utility class Logger handles exceptions gracefully.
             MIT License
@@ -555,7 +707,11 @@
             <param name="log">The log4net log to use, or null.  If Null, automatically created.</param>
             <param name="logType">They Type to be printed in the Log4Net Log Messages.</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:goatgitter.lib.tools.Logger.Started" -->
+        <member name="M:goatgitter.lib.tools.Logger.Started">
+            <summary>
+            Logs a message to the Log at the Info Level that the logging has Started.
+            </summary>
+        </member>
         <member name="M:goatgitter.lib.tools.Logger.LogInfo(System.String)">
             <summary>
             Logs a message to the Log at the Info Level.

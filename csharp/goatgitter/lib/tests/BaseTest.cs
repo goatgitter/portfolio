@@ -13,10 +13,19 @@ namespace goatgitter.lib.tests
         /// <inheritdoc/>
         public class TestClass: Base
         {
+            /// <summary>
+            /// An int representing a unique record.
+            /// </summary>
             public int Id { get; set; }
+            /// <summary>
+            /// A string containing a name for this class.
+            /// </summary>
             public string Name { get; set; }
         }
 
+        /// <summary>
+        /// An instance of the Test Class to be tested.
+        /// </summary>
         public TestClass testClassObj;
 
         /// <inheritdoc/>

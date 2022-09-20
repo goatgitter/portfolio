@@ -15,15 +15,30 @@ namespace goatgitter.lib.tests
         /// <inheritdoc/>
         public class TestClass : BaseWithLog
         {
+            /// <summary>
+            /// An int representing a unique record.
+            /// </summary>
             public int Id { get; set; }
+            /// <summary>
+            /// A string containing a name for this class.
+            /// </summary>
             public string Name { get; set; }
             
+            
+            /// <summary>
+            /// Constructor for the TestClass object.
+            /// </summary>
+            /// <param name="appNotepad"></param>
+            /// <param name="notepad"></param>
             public TestClass(ILogger appNotepad, ILogger notepad) : base(appNotepad, notepad)
             {
 
             }
         }
 
+        /// <summary>
+        /// An instance of the Test Class to be tested.
+        /// </summary>
         public TestClass testClassObj;
 
         /// <inheritdoc/>

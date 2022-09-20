@@ -45,6 +45,9 @@ namespace goatgitter.lib.tests
         protected Mock<ILog> MockAppLog = null;
         protected Type TestLogType = null;
 
+        /// <summary>
+        /// A common method to be called to setup common mock objects for unit tests.
+        /// </summary>
         protected void SetupMocks()
         {
             MockLog = new Mock<ILog>();
@@ -100,6 +103,9 @@ namespace goatgitter.lib.tests
                 It.IsAny<Exception>())).Verifiable();
         }
 
+        /// <summary>
+        /// A common method to be called to reset common mock objects for unit tests.
+        /// </summary>
         protected void ResetMocks()
         {
             MockLog.Reset();
@@ -108,6 +114,11 @@ namespace goatgitter.lib.tests
             MockAppLogger.Reset();
         }
 
+        /// <summary>
+        /// Verifies that the Started Message was logged at the info level.
+        /// </summary>
+        /// <param name="logType">Type of the log.</param>
+        /// <param name="numTimes">Integer representing the number of times the log should have been updated.</param>
         protected void VerifyStarted(Type logType, int numTimes)
         {
             StringBuilder sb = new StringBuilder();
@@ -118,6 +129,9 @@ namespace goatgitter.lib.tests
             , Times.Exactly(numTimes));
         }
 
+        /// <summary>
+        /// A method to create a Test Exception with the Inner Exception Message and Source.
+        /// </summary>
         public void CreateTestInnerException()
         {
             throw new Exception(TEST_INNER_EXCEPTION_MSG)
@@ -126,6 +140,9 @@ namespace goatgitter.lib.tests
             };
         }
 
+        /// <summary>
+        /// A method to create a Test Exception with an Inner Exception.
+        /// </summary>
         public void CreateTestExceptionWithInner()
         {
             try
@@ -141,6 +158,10 @@ namespace goatgitter.lib.tests
             }
         }
 
+        /// <summary>
+        /// A method to generate a Test Exception with an Inner Exception.
+        /// </summary>
+        /// <returns>An Exception</returns>
         public Exception GetTestExceptionWithInner()
         {
             Exception outer = null;
@@ -155,6 +176,9 @@ namespace goatgitter.lib.tests
             return outer;
         }
 
+        /// <summary>
+        /// A method to create a Test Exception without an Inner Exception.
+        /// </summary>
         public void CreateTestException()
         {
             throw new Exception(TEST_EXCEPTION_MSG)
@@ -163,6 +187,10 @@ namespace goatgitter.lib.tests
             };
         }
 
+        /// <summary>
+        /// A method to generate a Test Exception without an Inner Exception.
+        /// </summary>
+        /// <returns>An Exception</returns>
         public Exception GetTestException()
         {
             Exception outer = null;
