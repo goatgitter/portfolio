@@ -2,9 +2,9 @@
 using Moq;
 using NUnit.Framework;
 using System;
-using System.IO;
 using System.Linq;
 using static goatgitter.lib.Constants;
+using static goatgitter.lib.tests.TestConstants;
 
 namespace goatgitter.lib.tests.extensions
 {

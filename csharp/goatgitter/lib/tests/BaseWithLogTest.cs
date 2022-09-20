@@ -1,6 +1,6 @@
 ﻿using goatgitter.lib.tools;
-using Moq;
 using NUnit.Framework;
+using static goatgitter.lib.tests.TestConstants;
 
 namespace goatgitter.lib.tests
 {

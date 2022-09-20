@@ -6,7 +6,9 @@
     public static class Constants
     {
         // Error Messages
+        #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public const string ERR_CREATE_DIR = "An error occurred while creating directory {0}.";
+
         public const string ERR_PRINT_EXCEPTION = "An error occurred while printing the exception to the log file.";
         public const string ERR_DELETE_DIR = "An error occurred while deleting directory {0} with emptyFolder set to {1}.";
         public const string ERR_OCCURRED = "An error occurred in method: ";
@@ -19,5 +21,6 @@
 
         // Validation
         public static char[] INVALID_DIR_CHRS = new char[] { '*', '+' };
+        #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }
 }

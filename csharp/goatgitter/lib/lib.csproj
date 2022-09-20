@@ -86,6 +86,7 @@
     <Compile Include="extensions\StringBuilders.cs" />
     <Compile Include="extensions\Strings.cs" />
     <Compile Include="tests\BaseWithLogTest.cs" />
+    <Compile Include="tests\TestConstants.cs" />
     <Compile Include="tests\tools\FilerTest.cs" />
     <Compile Include="tools\Filer.cs" />
     <Compile Include="tools\Logger.cs" />

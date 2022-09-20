@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using System;
 using System.Text;
+using static goatgitter.lib.tests.TestConstants;
 
 namespace goatgitter.lib.tests.extensions
 {

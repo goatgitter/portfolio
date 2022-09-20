@@ -1,12 +1,10 @@
 ﻿using goatgitter.lib.tools;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Moq;
 using static goatgitter.lib.Constants;
+using static goatgitter.lib.tests.TestConstants;
 using goatgitter.lib.extensions;
 using System.IO;
 

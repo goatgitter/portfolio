@@ -223,6 +223,11 @@
         <member name="M:goatgitter.lib.tests.BaseWithLogTest.CloneTest">
             <inheritdoc/>
         </member>
+        <member name="T:goatgitter.lib.tests.TestConstants">
+            <summary>
+            A class of constant data used in Unit Tests.
+            </summary>
+        </member>
         <member name="T:goatgitter.lib.tests.tools.FilerTest">
              MIT License
              Copyright (c) 2022 goatgitter
@@ -527,6 +532,31 @@
             MIT License
             Copyright (c) 2022 goatgitter
             
+        </member>
+        <member name="F:goatgitter.lib.tests.TestBase.MockAppLogger">
+            <summary>
+            Mock App Logger
+            </summary>
+        </member>
+        <member name="F:goatgitter.lib.tests.TestBase.MockLogger">
+            <summary>
+            Mock Logger
+            </summary>
+        </member>
+        <member name="F:goatgitter.lib.tests.TestBase.MockLog">
+            <summary>
+            Mock Log
+            </summary>
+        </member>
+        <member name="F:goatgitter.lib.tests.TestBase.MockAppLog">
+            <summary>
+            Mock App Log
+            </summary>
+        </member>
+        <member name="F:goatgitter.lib.tests.TestBase.TestLogType">
+            <summary>
+            Type to be used to the Test Loggers.
+            </summary>
         </member>
         <member name="M:goatgitter.lib.tests.TestBase.SetupMocks">
             <summary>

@@ -6,6 +6,7 @@ using NUnit.Framework;
 using System;
 using System.Diagnostics;
 using System.Text;
+using static goatgitter.lib.tests.TestConstants;
 
 namespace goatgitter.lib.tests
 {
@@ -17,32 +18,26 @@ namespace goatgitter.lib.tests
     [TestFixture]
     public class TestBase
     {
-        public const int TEST_ID = 999;
-        public const string TEST_NAME = "Pippi Longstocking";
-        public const string TEST_ALL_SPACES_STR = "         ";
-        public const string TEST_LEADING_SPACES_STR = "         Longstocking";
-        public const string TEST_TRAILING_SPACES_STR = "Pippi         ";
-        public const string TEST_HAS_PERIODS_STR = "Pippi.Longstocking";
-        public const string TEST_HAS_QUESTIONS_STR = "Pippi?Longstocking";
-        public const string TEST_EXCEPTION_MSG = "TestExceptionMessage";
-        public const string TEST_EXCEPTION_SRC = "TestExceptionSource";
-        public const string TEST_INNER_EXCEPTION_MSG = "TestInnerExceptionMessage";
-        public const string TEST_INNER_EXCEPTION_SRC = "TestInnerExceptionSource";
-        public const string TEST_FILE_NAME_DNE = "dne.txt";
-        public const string TEST_FILE_NAME = "testFile.log";
-        public const string TEST_DIR_NAME = "testData";
-        public const string TEST_DIR_DNE = "doesNotExist";
-        public const string TEST_DIR_INVALID = "*+";
-        public const string TEST_FILE_INVALID = "testFile*+";
-        public const string TEST_ERROR_MSG = "Test Error Message";
-        public const string TEST_ERROR_MSG_WITH_DATA = "Test Error Message data1-> {0}, data2-> {1}";
-        public const string TEST_INVALID_FILE_NAME_ERR_VAL = "<doesNotExist/blah.txt";
 
-        // Base Logging
+        /// <summary>
+        /// Mock App Logger
+        /// </summary>
         protected Mock<ILogger> MockAppLogger = null;
+        /// <summary>
+        /// Mock Logger
+        /// </summary>
         protected Mock<ILogger> MockLogger = null;
+        /// <summary>
+        /// Mock Log
+        /// </summary>
         protected Mock<ILog> MockLog = null;
+        /// <summary>
+        /// Mock App Log
+        /// </summary>
         protected Mock<ILog> MockAppLog = null;
+        /// <summary>
+        /// Type to be used to the Test Loggers.
+        /// </summary>
         protected Type TestLogType = null;
 
         /// <summary>

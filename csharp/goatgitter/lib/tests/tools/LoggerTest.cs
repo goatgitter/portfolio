@@ -2,9 +2,9 @@
 using System;
 using goatgitter.lib.tools;
 using Moq;
-using System.Text;
 using goatgitter.lib.extensions;
 using static goatgitter.lib.Constants;
+using static goatgitter.lib.tests.TestConstants;
 
 namespace goatgitter.lib.tests.tools
 {
