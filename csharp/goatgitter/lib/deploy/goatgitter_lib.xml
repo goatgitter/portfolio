@@ -271,6 +271,14 @@
             For cases where the method should error and return a result of false.
             </summary>
         </member>
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.RetrieveFileForUpdateNoErrorsResultNotEmptyTest(System.String,System.String,System.Boolean)">
+            <summary>
+            Tests the method for retrieving a file for update.
+            </summary>
+            <param name="folder"></param>
+            <param name="fileName"></param>
+            <param name="isResultEmpty"></param>
+        </member>
         <member name="T:goatgitter.lib.tests.tools.LoggerTest">
              MIT License
              Copyright (c) 2022 goatgitter
@@ -514,15 +522,7 @@
             </summary>
             <param name="folder">The directory where the file resides.</param>
             <param name="emptyFolder">A boolean that specifies if the folder should automatically be emptied.</param>
-            <returns></returns>
-        </member>
-        <member name="M:goatgitter.lib.tools.Filer.CreateFileForWrite(System.String,System.String)">
-            <summary>
-            Creates an empty a File.
-            </summary>
-            <param name="folder">The directory where the file resides.</param>
-            <param name="fileName">The name of the file to create for write.</param>
-            <returns>bool result</returns>
+            <returns>bool</returns>
         </member>
         <member name="M:goatgitter.lib.tools.Filer.RetrieveFileForUpdate(System.String,System.String)">
             <summary>
@@ -530,7 +530,7 @@
             </summary>
             <param name="folder">The directory where the file resides.</param>
             <param name="fileName">The name of the file to retrieve for update.</param>
-            <returns>bool result</returns>
+            <returns>FileStream result</returns>
         </member>
         <member name="T:goatgitter.lib.tools.Logger">
             Utility class Logger handles exceptions gracefully.

@@ -92,6 +92,13 @@ namespace goatgitter.lib.tests.tools
                 It.IsAny<Exception>()), Times.Exactly(numTimes));
         }
 
+        private void VerifyRetrieveFileForUpdateError(string folder, string fileName, int numTimes)
+        {
+            MockLogger.Verify(m => m.LogExceptionWithData(It.Is<string>(s => s.Equals(ERR_GET_FILE_FOR_UPDATE)),
+                It.Is<object[]>(o => o.Contains<object>(folder) && o.Contains<object>(fileName)),
+                It.IsAny<Exception>()), Times.Exactly(numTimes));
+        }
+
         private void VerifyDeleteDirError(string folder, bool emptyFolder, int numTimes)
         {
             String dirPath = testObj.GetAppPathFolder(folder);
@@ -251,6 +258,7 @@ namespace goatgitter.lib.tests.tools
             bool deleteResult = testObj.SafeDeleteFolder(folder);
             Assert.IsTrue(deleteResult);
         }
+
         /// <summary>
         /// Tests the SafeCreateFile Method for cases where:
         /// No Errors, and result is False
@@ -365,8 +373,36 @@ namespace goatgitter.lib.tests.tools
             // Cleanup test
             bool deleteResult = testObj.SafeDeleteFolder(folder, true);
             VerifyDeleteDirNoErrorTrueResult(deleteResult, folder, true);
-        }   
-        
+        }
 
+        /// <summary>
+        /// Tests the method for retrieving a file for update.
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <param name="fileName"></param>
+        /// <param name="isResultEmpty"></param>
+        [Test]
+        [TestCase(TEST_DIR_NAME, TEST_FILE_NAME, false)]
+        [TestCase(null, null)]
+        [TestCase(null, TEST_FILE_NAME)]
+        [TestCase(TEST_DIR_NAME, null)]
+        [TestCase(TEST_DIR_NAME, TEST_FILE_INVALID)]
+        [TestCase(TEST_DIR_INVALID, TEST_FILE_NAME)]
+        public void RetrieveFileForUpdateNoErrorsResultNotEmptyTest(string folder, string fileName, bool isResultEmpty = true)
+        {
+            testObj = new Filer(MockLogger.Object);
+            FileStream fs = testObj.RetrieveFileForUpdate(folder, fileName);
+            VerifyRetrieveFileForUpdateError(folder, fileName, 0);
+            Assert.AreEqual(isResultEmpty, fs.IsEmpty());
+            if (fs.IsNotEmpty())
+            {
+                fs.Close();
+            }
+            // Cleanup test
+            bool deleteResult = testObj.SafeDeleteFolder(folder, true);
+            VerifyDeleteDirNoErrorTrueResult(deleteResult, folder, true);
+        }
+
+        
     }
 }

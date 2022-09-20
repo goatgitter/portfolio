@@ -144,13 +144,13 @@ namespace goatgitter.lib.tools
             return result;
         }
 
-        
+
         /// <summary>
         /// Safely gets a Path object for the params specified.
         /// </summary>
         /// <param name="folder">The directory where the file resides.</param>
         /// <param name="emptyFolder">A boolean that specifies if the folder should automatically be emptied.</param>
-        /// <returns></returns>
+        /// <returns>bool</returns>
         public bool SafeDeleteFolder(string folder, bool emptyFolder = true)
         {
             bool result = false;
@@ -184,31 +184,26 @@ namespace goatgitter.lib.tools
         }
 
         /// <summary>
-        /// Creates an empty a File.
-        /// </summary>
-        /// <param name="folder">The directory where the file resides.</param>
-        /// <param name="fileName">The name of the file to create for write.</param>
-        
-        /// <returns>bool result</returns>
-        public bool CreateFileForWrite(string folder, string fileName)
-        {
-            bool result = false;
-            string filePath = SafeGetFilePath(folder, fileName, true, true);
-            result = filePath.IsNotEmpty();
-            return result;
-        }
-
-        /// <summary>
         /// Opens a File for writing information.
         /// </summary>
         /// <param name="folder">The directory where the file resides.</param>
         /// <param name="fileName">The name of the file to retrieve for update.</param>
-        /// <returns>bool result</returns>
-        public bool RetrieveFileForUpdate(string folder, string fileName)
+        /// <returns>FileStream result</returns>
+        public FileStream RetrieveFileForUpdate(string folder, string fileName)
         {
-            bool result = false;
+            FileStream result = null;
             string filePath = SafeGetFilePath(folder, fileName, true, true);
-            result = filePath.IsNotEmpty();
+            if (filePath.IsNotEmpty())
+            {
+                try
+                {
+                    result = File.OpenWrite(filePath);
+                }
+                catch (Exception exception)
+                {
+                    Notepad.LogExceptionWithData(ERR_GET_FILE_FOR_UPDATE, new object[] { folder, fileName }, exception);
+                }
+            }
             return result;
         }
     }
