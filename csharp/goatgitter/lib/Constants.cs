@@ -18,6 +18,7 @@
         public const string ERR_VALID_FILE_NAME = "An error occurred while attempting to determine if {0} contains a valid file name.";
         public const string ERR_VALID_DIR_NAME = "An error occurred while attempting to determine if {0} contains a valid directory name.";
         public const string ERR_GET_FILE_FOR_UPDATE = "An error occurred while attempting to retrieve file for update from folder -> {0} and fileName -> {1}.";
+        public const string ERR_GET_FILE = "An error occurred while attempting to retrieve file from folder -> {0} with name -> {1}.";
 
         // Validation
         public static char[] INVALID_DIR_CHRS = new char[] { '*', '+' };

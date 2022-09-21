@@ -22,7 +22,6 @@ namespace goatgitter.lib.tools
             Notepad.Started();
         }
 
-
         /// <summary>
         /// Gets the full path of the current application combined with a folder name.
         /// </summary>
@@ -179,6 +178,30 @@ namespace goatgitter.lib.tools
             {
                 // No Directory to delete
                 result = true;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Opens an exisiting File
+        /// </summary>
+        /// <param name="folder">The directory where the file resides.</param>
+        /// <param name="fileName">The name of the file to retrieve.</param>
+        /// <returns>FileStream result</returns>
+        public FileStream RetrieveFile(string folder, string fileName)
+        {
+            FileStream result = null;
+            string filePath = SafeGetFilePath(folder, fileName, false, false);
+            if (filePath.IsNotEmpty())
+            {
+                try
+                {
+                    result = File.OpenRead(filePath);
+                }
+                catch (Exception exception)
+                {
+                    Notepad.LogExceptionWithData(ERR_GET_FILE, new object[] { folder, fileName }, exception);
+                }
             }
             return result;
         }
