@@ -270,7 +270,7 @@
             Tests the SafeDeleteFolder Method 
             </summary>
         </member>
-        <member name="M:goatgitter.lib.tests.tools.FilerTest.RetrieveFileNoErrorsTest(System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.Int32)">
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.RetrieveFileTest(System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.Int32)">
             <summary>
             Tests the method for retrieving a file.
             </summary>
@@ -281,13 +281,14 @@
             <param name="createFile"></param>
             <param name="numErrors"></param>
         </member>
-        <member name="M:goatgitter.lib.tests.tools.FilerTest.RetrieveFileForUpdateNoErrorsResultNotEmptyTest(System.String,System.String,System.Boolean)">
+        <member name="M:goatgitter.lib.tests.tools.FilerTest.RetrieveFileForUpdateNoErrorsTest(System.String,System.String,System.Boolean,System.Int32)">
             <summary>
             Tests the method for retrieving a file for update.
             </summary>
             <param name="folder"></param>
             <param name="fileName"></param>
             <param name="isResultEmpty"></param>
+            <param name="numErrors"></param>
         </member>
         <member name="T:goatgitter.lib.tests.tools.LoggerTest">
              MIT License

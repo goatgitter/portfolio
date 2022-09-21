@@ -285,7 +285,7 @@ namespace goatgitter.lib.tests.tools
         [TestCase(TEST_DIR_NAME, TEST_FILE_INVALID)]
         [TestCase(TEST_DIR_INVALID, TEST_FILE_NAME)]
         [TestCase(TEST_DIR_NAME, TEST_FILE_NAME, false, true, true)]
-        public void RetrieveFileNoErrorsTest(string folder, string fileName, bool isResultEmpty = true, bool createFolder = false, 
+        public void RetrieveFileTest(string folder, string fileName, bool isResultEmpty = true, bool createFolder = false, 
             bool createFile = false, int numErrors = 0)
         {
             testObj = new Filer(MockLogger.Object);
@@ -308,6 +308,7 @@ namespace goatgitter.lib.tests.tools
         /// <param name="folder"></param>
         /// <param name="fileName"></param>
         /// <param name="isResultEmpty"></param>
+        /// <param name="numErrors"></param>
         [Test]
         [TestCase(TEST_DIR_NAME, TEST_FILE_NAME, false)]
         [TestCase(null, null)]
@@ -315,11 +316,11 @@ namespace goatgitter.lib.tests.tools
         [TestCase(TEST_DIR_NAME, null)]
         [TestCase(TEST_DIR_NAME, TEST_FILE_INVALID)]
         [TestCase(TEST_DIR_INVALID, TEST_FILE_NAME)]
-        public void RetrieveFileForUpdateNoErrorsResultNotEmptyTest(string folder, string fileName, bool isResultEmpty = true)
+        public void RetrieveFileForUpdateNoErrorsTest(string folder, string fileName, bool isResultEmpty = true, int numErrors = 0)
         {
             testObj = new Filer(MockLogger.Object);
             FileStream fs = testObj.RetrieveFileForUpdate(folder, fileName);
-            VerifyRetrieveFileForUpdateError(folder, fileName, 0);
+            VerifyRetrieveFileForUpdateError(folder, fileName, numErrors);
             Assert.AreEqual(isResultEmpty, fs.IsEmpty());
             if (fs.IsNotEmpty())
             {
