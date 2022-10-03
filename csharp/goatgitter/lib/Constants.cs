@@ -20,6 +20,7 @@
         public const string ERR_GET_FILE_FOR_UPDATE = "An error occurred while attempting to retrieve file for update from folder -> {0} and fileName -> {1}.";
         public const string ERR_GET_FILE = "An error occurred while attempting to retrieve file from folder -> {0} with name -> {1}.";
         public const string ERR_ENUM_DESC = "An error occurred while attempting to retrieve the description for enum {0} .";
+        public const string ERR_ENUM_VAL_BY_DESC = "An error occurred while attempting to retrieve the enum value for description {0} .";
 
         // Validation
         public static char[] INVALID_DIR_CHRS = new char[] { '*', '+' };

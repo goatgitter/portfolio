@@ -40,7 +40,7 @@ namespace goatgitter.lib.extensions
             catch (Exception exception)
             {
                 ILogger logger = notepad ?? description.GetLog();
-                logger.LogExceptionWithData(ERR_ENUM_DESC, new object[] { description }, exception);
+                logger.LogExceptionWithData(ERR_ENUM_VAL_BY_DESC, new object[] { description }, exception);
             }
             return result;
         }

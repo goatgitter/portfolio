@@ -96,7 +96,7 @@ namespace goatgitter.lib.tests.extensions
         {
             T result = Enums.GetValByDesc<T>(desc, MockAppLogger.Object);
             MockAppLogger.Verify(m => m.LogExceptionWithData(
-                    It.Is<string>(s => s.Equals(ERR_ENUM_DESC)),
+                    It.Is<string>(s => s.Equals(ERR_ENUM_VAL_BY_DESC)),
                     It.Is<object[]>(o => o.Contains<object>(desc)),
                     It.IsAny<Exception>()), Times.Exactly(errorsExpected));
             Assert.AreEqual(expectedVal, result);
