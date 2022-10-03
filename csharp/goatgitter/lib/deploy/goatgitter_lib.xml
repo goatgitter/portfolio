@@ -64,6 +64,14 @@
             Copyright (c) 2022 goatgitter
             
         </member>
+        <member name="M:goatgitter.lib.extensions.Enums.GetDesc(System.Enum,goatgitter.lib.tools.ILogger)">
+            <summary>
+            Returns the Description of an Enum Value.
+            </summary>
+            <param name="enumValue"></param>
+            <param name="notepad"></param>
+            <returns>String containing the description, if one is defined, otherwise, the field name is returned.</returns>
+        </member>
         <member name="M:goatgitter.lib.extensions.Enums.IsEmpty(System.Enum)">
             <summary>
             Method to determine if an Enum instance contains a value.
@@ -268,6 +276,14 @@
             </summary>
             <param name="val"></param>
             <param name="expectedResult"></param>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.EnumsTest.GetDescTest(System.Enum,System.String,System.Int32)">
+            <summary>
+            Tests the GetDesc Method
+            </summary>
+            <param name="val"></param>
+            <param name="expectedDesc"></param>
+            <param name="errorsExpected"></param>
         </member>
         <member name="T:goatgitter.lib.tests.extensions.ExceptionsTest">
             ObjectsTest class Tests the Objects extension class.

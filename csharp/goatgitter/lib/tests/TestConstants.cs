@@ -1,4 +1,7 @@
-﻿namespace goatgitter.lib.tests
+﻿using System.ComponentModel;
+using static goatgitter.lib.Constants;
+
+namespace goatgitter.lib.tests
 {
     /// <summary>
     /// A class of constant data used in Unit Tests.
@@ -28,7 +31,18 @@
         public const string TEST_INVALID_FILE_NAME_ERR_VAL = "<doesNotExist/blah.txt";
 
         public enum TEST_ENUM_RATING { None = 0, Best = 1, Good = 2, Fair = 3, Poor = 4, Incomplete = 5 };
-
-        #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
+        public enum TEST_ENUM_GRADE
+        {
+            [Description(NONE)]
+            None = 0,
+            [Description(BEST)]
+            A,
+            B,
+            [Description("Fair")]
+            C,
+            [Description("Poor")]
+            D
+        }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }
 }

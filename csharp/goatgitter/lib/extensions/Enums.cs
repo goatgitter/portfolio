@@ -1,4 +1,7 @@
-﻿using System;
+﻿using goatgitter.lib.tools;
+using System;
+using System.ComponentModel;
+using System.Reflection;
 using static goatgitter.lib.Constants;
 
 namespace goatgitter.lib.extensions
@@ -12,6 +15,39 @@ namespace goatgitter.lib.extensions
 
     public static class Enums
     {
+        /// <summary>
+        /// Returns the Description of an Enum Value.
+        /// </summary>
+        /// <param name="enumValue"></param>
+        /// <param name="notepad"></param>
+        /// <returns>String containing the description, if one is defined, otherwise, the field name is returned.</returns>
+        public static string GetDesc(this Enum enumValue, ILogger notepad = null)
+        {
+            string result = "";
+            try
+            {
+                FieldInfo fieldInfo = enumValue.GetType().GetField(enumValue.ToString());
+                if (fieldInfo.IsNotEmpty())
+                {
+                    DescriptionAttribute attrInfo = (DescriptionAttribute) Attribute.GetCustomAttribute(fieldInfo, typeof(DescriptionAttribute));
+                    if (attrInfo.IsNotEmpty())
+                    {
+                        result = attrInfo.Description;
+                    }
+                    else
+                    {
+                        result = fieldInfo.Name;
+                    }                   
+                }                
+            }
+            catch (Exception exception)
+            {
+                ILogger logger = notepad ?? enumValue.GetLog();
+                logger.LogExceptionWithData(ERR_ENUM_DESC, new object[] { enumValue }, exception);
+            }
+            return result;
+        }
+
         /// <summary>
         /// Method to determine if an Enum instance contains a value.
         /// </summary>

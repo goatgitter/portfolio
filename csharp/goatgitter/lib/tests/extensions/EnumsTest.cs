@@ -2,6 +2,9 @@
 using NUnit.Framework;
 using System;
 using static goatgitter.lib.tests.TestConstants;
+using static goatgitter.lib.Constants;
+using Moq;
+using System.Linq;
 
 namespace goatgitter.lib.tests.extensions
 {
@@ -54,6 +57,27 @@ namespace goatgitter.lib.tests.extensions
         public void IsNotEmptyTest(Enum val, bool expectedResult)
         {
             Assert.AreEqual(expectedResult, val.IsNotEmpty());
+        }
+
+        /// <summary>
+        /// Tests the GetDesc Method
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="expectedDesc"></param>
+        /// <param name="errorsExpected"></param>
+        [Test]
+        [TestCase(TEST_ENUM_GRADE.None, NONE)]
+        [TestCase(TEST_ENUM_GRADE.A, BEST)]
+        [TestCase(new TEST_ENUM_GRADE(), NONE)]
+        [TestCase(TEST_ENUM_GRADE.B, "B")]
+        public void GetDescTest(Enum val, string expectedDesc, int errorsExpected = 0)
+        {
+            string result = val.GetDesc(MockAppLogger.Object);
+            MockAppLogger.Verify(m => m.LogExceptionWithData(
+                    It.Is<string>(s => s.Equals(ERR_ENUM_DESC)),
+                    It.Is<object[]>(o => o.Contains<object>(val)),
+                    It.IsAny<Exception>()), Times.Exactly(errorsExpected));
+            Assert.AreEqual(expectedDesc, result);
         }
     }
 }
