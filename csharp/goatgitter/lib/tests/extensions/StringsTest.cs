@@ -9,7 +9,7 @@ using static goatgitter.lib.tests.TestConstants;
 namespace goatgitter.lib.tests.extensions
 {
     /** 
-    * ObjectsTest class Tests the Objects extension class.
+    * StringsTest class Tests the Strings extension class.
     * MIT License
     * Copyright (c) 2022 goatgitter
     * */

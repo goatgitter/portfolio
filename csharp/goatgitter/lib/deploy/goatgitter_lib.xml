@@ -58,6 +58,26 @@
             Class of static Constants used throughout the application.
             </summary>
         </member>
+        <member name="T:goatgitter.lib.extensions.Enums">
+            Extension class for Enums.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
+        <member name="M:goatgitter.lib.extensions.Enums.IsEmpty(System.Enum)">
+            <summary>
+            Method to determine if an Enum instance contains a value.
+            </summary>
+            <param name="enumVal">Enum instance to evaluate.</param>
+            <returns>bool true if enumVal does not contain a value, otherwise false.</returns>
+        </member>
+        <member name="M:goatgitter.lib.extensions.Enums.IsNotEmpty(System.Enum)">
+            <summary>
+            Method to determine if an Enum instance does not contain a value.
+            </summary>
+            <param name="enumVal">Enum instance to evaluate.</param>
+            <returns>bool true if enumVal does contain a value, otherwise false.</returns>
+        </member>
         <member name="T:goatgitter.lib.extensions.Exceptions">
             Extension class for Exceptions.
             MIT License
@@ -223,6 +243,144 @@
         <member name="M:goatgitter.lib.tests.BaseWithLogTest.CloneTest">
             <inheritdoc/>
         </member>
+        <member name="T:goatgitter.lib.tests.extensions.EnumsTest">
+            EnumsTest class Tests the Enums extension class.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.EnumsTest.SetupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.EnumsTest.CleanupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.EnumsTest.IsEmptyTest(System.Enum,System.Boolean)">
+            <summary>
+            Tests the IsEmpty Method
+            </summary>
+            <param name="val"></param>
+            <param name="expectedResult"></param>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.EnumsTest.IsNotEmptyTest(System.Enum,System.Boolean)">
+            <summary>
+            Tests the IsNotEmpty Method
+            </summary>
+            <param name="val"></param>
+            <param name="expectedResult"></param>
+        </member>
+        <member name="T:goatgitter.lib.tests.extensions.ExceptionsTest">
+            ObjectsTest class Tests the Objects extension class.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.ExceptionsTest.SetupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.ExceptionsTest.CleanupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.ExceptionsTest.LogPrintTest">
+            <inheritdoc/>
+        </member>
+        <member name="T:goatgitter.lib.tests.extensions.IntsTest">
+            ObjectsTest class Tests the Objects extension class.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.IntsTest.SetupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.IntsTest.CleanupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.IntsTest.IsPositiveTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.IntsTest.ToSafeStringTest">
+            <inheritdoc/>
+        </member>
+        <member name="T:goatgitter.lib.tests.extensions.ObjectsTest">
+            ObjectsTest class Tests the Objects extension class.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.ObjectsTest.SetupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.ObjectsTest.CleanupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.ObjectsTest.IsEmptyTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.ObjectsTest.IsNotEmptyTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.ObjectsTest.SafeToStringTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.ObjectsTest.SafeEqualsTest">
+            <inheritdoc/>
+        </member>
+        <member name="T:goatgitter.lib.tests.extensions.StringBuildersTest">
+            ObjectsTest class Tests the Objects extension class.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.StringBuildersTest.SetupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.StringBuildersTest.CleanupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.StringBuildersTest.AppendIfTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.StringBuildersTest.AppendLineIfTest">
+            <inheritdoc/>
+        </member>
+        <member name="T:goatgitter.lib.tests.extensions.StringsTest">
+            StringsTest class Tests the Strings extension class.
+            MIT License
+            Copyright (c) 2022 goatgitter
+            
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.StringsTest.SetupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.StringsTest.CleanupTest">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.StringsTest.IsEmptyTest(System.String,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.StringsTest.IsNotEmptyTest(System.String,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.StringsTest.WordCountTest(System.String,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.StringsTest.IsValidFileNameTest(System.String,System.Boolean,System.Int32)">
+            <summary>
+            Tests the IsValidFileName method
+            </summary>
+            <param name="val">A string containing the value to be validated.</param>
+            <param name="expectedResult">A bool representing the expected result from the method.</param>
+            <param name="errorsExpected">An integer representing the number of expected errors to result from calling the method.</param>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.StringsTest.IsValidDirNameTest(System.String,System.Boolean,System.Int32)">
+            <summary>
+            Tests the IsValidDirName method
+            </summary>
+            <param name="val">A string containing the value to be validated.</param>
+            <param name="expectedResult">A bool representing the expected result from the method.</param>
+            <param name="errorsExpected">An integer representing the number of expected errors to result from calling the method.</param>
+        </member>
         <member name="T:goatgitter.lib.tests.TestConstants">
             <summary>
             A class of constant data used in Unit Tests.
@@ -380,118 +538,6 @@
         </member>
         <member name="M:goatgitter.lib.tests.BaseTest.CloneTest">
             <inheritdoc/>
-        </member>
-        <member name="T:goatgitter.lib.tests.extensions.ExceptionsTest">
-            ObjectsTest class Tests the Objects extension class.
-            MIT License
-            Copyright (c) 2022 goatgitter
-            
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.ExceptionsTest.SetupTest">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.ExceptionsTest.CleanupTest">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.ExceptionsTest.LogPrintTest">
-            <inheritdoc/>
-        </member>
-        <member name="T:goatgitter.lib.tests.extensions.IntsTest">
-            ObjectsTest class Tests the Objects extension class.
-            MIT License
-            Copyright (c) 2022 goatgitter
-            
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.IntsTest.SetupTest">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.IntsTest.CleanupTest">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.IntsTest.IsPositiveTest">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.IntsTest.ToSafeStringTest">
-            <inheritdoc/>
-        </member>
-        <member name="T:goatgitter.lib.tests.extensions.ObjectsTest">
-            ObjectsTest class Tests the Objects extension class.
-            MIT License
-            Copyright (c) 2022 goatgitter
-            
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.ObjectsTest.SetupTest">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.ObjectsTest.CleanupTest">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.ObjectsTest.IsEmptyTest">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.ObjectsTest.IsNotEmptyTest">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.ObjectsTest.SafeToStringTest">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.ObjectsTest.SafeEqualsTest">
-            <inheritdoc/>
-        </member>
-        <member name="T:goatgitter.lib.tests.extensions.StringBuildersTest">
-            ObjectsTest class Tests the Objects extension class.
-            MIT License
-            Copyright (c) 2022 goatgitter
-            
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.StringBuildersTest.SetupTest">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.StringBuildersTest.CleanupTest">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.StringBuildersTest.AppendIfTest">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.StringBuildersTest.AppendLineIfTest">
-            <inheritdoc/>
-        </member>
-        <member name="T:goatgitter.lib.tests.extensions.StringsTest">
-            ObjectsTest class Tests the Objects extension class.
-            MIT License
-            Copyright (c) 2022 goatgitter
-            
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.StringsTest.SetupTest">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.StringsTest.CleanupTest">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.StringsTest.IsEmptyTest(System.String,System.Boolean)">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.StringsTest.IsNotEmptyTest(System.String,System.Boolean)">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.StringsTest.WordCountTest(System.String,System.Int32)">
-            <inheritdoc/>
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.StringsTest.IsValidFileNameTest(System.String,System.Boolean,System.Int32)">
-            <summary>
-            Tests the IsValidFileName method
-            </summary>
-            <param name="val">A string containing the value to be validated.</param>
-            <param name="expectedResult">A bool representing the expected result from the method.</param>
-            <param name="errorsExpected">An integer representing the number of expected errors to result from calling the method.</param>
-        </member>
-        <member name="M:goatgitter.lib.tests.extensions.StringsTest.IsValidDirNameTest(System.String,System.Boolean,System.Int32)">
-            <summary>
-            Tests the IsValidDirName method
-            </summary>
-            <param name="val">A string containing the value to be validated.</param>
-            <param name="expectedResult">A bool representing the expected result from the method.</param>
-            <param name="errorsExpected">An integer representing the number of expected errors to result from calling the method.</param>
         </member>
         <member name="T:goatgitter.lib.tests.TestBase">
             TestBase class from which other Test classes will inherit.

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace goatgitter.lib.tests
+﻿namespace goatgitter.lib.tests
 {
     /// <summary>
     /// A class of constant data used in Unit Tests.
@@ -32,6 +26,9 @@ namespace goatgitter.lib.tests
         public const string TEST_ERROR_MSG = "Test Error Message";
         public const string TEST_ERROR_MSG_WITH_DATA = "Test Error Message data1-> {0}, data2-> {1}";
         public const string TEST_INVALID_FILE_NAME_ERR_VAL = "<doesNotExist/blah.txt";
+
+        public enum TEST_ENUM_RATING { None = 0, Best = 1, Good = 2, Fair = 3, Poor = 4, Incomplete = 5 };
+
         #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }
 }

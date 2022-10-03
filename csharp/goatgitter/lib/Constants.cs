@@ -22,6 +22,9 @@
 
         // Validation
         public static char[] INVALID_DIR_CHRS = new char[] { '*', '+' };
-        #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
+
+        // Constants for Extensions
+        public const string NONE = "None";
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }
 }
