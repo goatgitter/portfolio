@@ -66,29 +66,6 @@ namespace goatgitter.lib.tests.tools
                 It.IsAny<Exception>()), Times.Exactly(numTimes));
         }
 
-        private void VerifySafeGetFilePathError(string folder, string fileName, int numTimes)
-        {
-            String dirPath = testObj.GetAppPathFolder(folder);
-            MockLogger.Verify(m => m.LogExceptionWithData(
-                It.Is<string>(s => s.Equals(ERR_GET_PATH)),
-                It.Is<object[]>(o => o.Contains<object>(dirPath) && o.Contains<object>(fileName)),
-                It.IsAny<Exception>()), Times.Exactly(numTimes));
-        }
-
-        private void VerifyRetrieveFileForUpdateError(string folder, string fileName, int numTimes)
-        {
-            MockLogger.Verify(m => m.LogExceptionWithData(It.Is<string>(s => s.Equals(ERR_GET_FILE_FOR_UPDATE)),
-                It.Is<object[]>(o => o.Contains<object>(folder) && o.Contains<object>(fileName)),
-                It.IsAny<Exception>()), Times.Exactly(numTimes));
-        }
-
-        private void VerifyRetrieveFileError(string folder, string fileName, int numTimes)
-        {
-            MockLogger.Verify(m => m.LogExceptionWithData(It.Is<string>(s => s.Equals(ERR_GET_FILE)),
-                It.Is<object[]>(o => o.Contains<object>(folder) && o.Contains<object>(fileName)),
-                It.IsAny<Exception>()), Times.Exactly(numTimes));
-        }
-
         private void VerifyDeleteDirError(string folder, bool emptyFolder, int numTimes)
         {
             String dirPath = testObj.GetAppPathFolder(folder);
@@ -101,18 +78,6 @@ namespace goatgitter.lib.tests.tools
         {
             VerifyDeleteDirError(folder, emptyFolder, 0);
             Assert.IsTrue(result);
-        }
-
-        private void VerifyCreateFileNoErrorTrueResult(bool result, string filePath)
-        {
-            VerifyCreateFileError(filePath, 0);
-            Assert.IsTrue(result);
-        }
-
-        private void VerifyCreateFileNoErrorFalseResult(bool result, string filePath)
-        {
-            VerifyCreateFileError(filePath, 0);
-            Assert.IsFalse(result);
         }
 
         private void SetupFolder(string folder, bool createFolder, int createDirErrors = 0, bool expectedResult = true)
@@ -132,7 +97,8 @@ namespace goatgitter.lib.tests.tools
             {
                 string filePath = GetTestFilePath(folder, TEST_FILE_NAME);
                 bool createFileResult = testObj.SafeCreateFile(filePath);
-                VerifyCreateFileNoErrorTrueResult(createFileResult, folder);
+                VerifyCreateFileError(folder, 0);
+                Assert.IsTrue(createFileResult);
             }
         }
 
@@ -194,7 +160,11 @@ namespace goatgitter.lib.tests.tools
                 VerifyCreateDirError(folder, createDirErrors);
             }
             
-            VerifySafeGetFilePathError(folder, fileName, getPathErrors);
+            String dirPath = testObj.GetAppPathFolder(folder);
+            MockLogger.Verify(m => m.LogExceptionWithData(
+                It.Is<string>(s => s.Equals(ERR_GET_PATH)),
+                It.Is<object[]>(o => o.Contains<object>(dirPath) && o.Contains<object>(fileName)),
+                It.IsAny<Exception>()), Times.Exactly(getPathErrors));
             Assert.AreEqual(isResultEmpty, result.IsEmpty());
             bool deleteResult = testObj.SafeDeleteFolder(folder);
             Assert.IsTrue(deleteResult);
@@ -291,7 +261,9 @@ namespace goatgitter.lib.tests.tools
             testObj = new Filer(MockLogger.Object);
             SetupFiles(folder, TEST_FILE_NAME, createFolder, createFile);
             FileStream fs = testObj.RetrieveFile(folder, fileName);
-            VerifyRetrieveFileError(folder, fileName, numErrors);
+            MockLogger.Verify(m => m.LogExceptionWithData(It.Is<string>(s => s.Equals(ERR_GET_FILE)),
+                It.Is<object[]>(o => o.Contains<object>(folder) && o.Contains<object>(fileName)),
+                It.IsAny<Exception>()), Times.Exactly(numErrors));
             Assert.AreEqual(isResultEmpty, fs.IsEmpty());
             if (fs.IsNotEmpty())
             {
@@ -320,7 +292,10 @@ namespace goatgitter.lib.tests.tools
         {
             testObj = new Filer(MockLogger.Object);
             FileStream fs = testObj.RetrieveFileForUpdate(folder, fileName);
-            VerifyRetrieveFileForUpdateError(folder, fileName, numErrors);
+            MockLogger.Verify(m => m.LogExceptionWithData(It.Is<string>(s => s.Equals(ERR_GET_FILE_FOR_UPDATE)),
+                It.Is<object[]>(o => o.Contains<object>(folder) && o.Contains<object>(fileName)),
+                It.IsAny<Exception>()), Times.Exactly(numErrors));
+
             Assert.AreEqual(isResultEmpty, fs.IsEmpty());
             if (fs.IsNotEmpty())
             {
