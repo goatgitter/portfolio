@@ -15,6 +15,36 @@ namespace goatgitter.lib.extensions
 
     public static class Enums
     {
+
+        /// <summary>
+        /// Finds the Enum Value for a given description.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="description"></param>
+        /// <param name="notepad"></param>
+        /// <returns>The Enum Value with the given description, if found, otherwise the default Enum value.</returns>
+        public static T GetValByDesc<T>(this string description, ILogger notepad = null) where T : Enum
+        {
+            T result = default;
+            try
+            {
+                foreach (Enum enumItem in Enum.GetValues(typeof(T)))
+                {
+                    if (enumItem.GetDesc() == description)
+                    {
+                        result = (T)enumItem;
+                        break;
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                ILogger logger = notepad ?? description.GetLog();
+                logger.LogExceptionWithData(ERR_ENUM_DESC, new object[] { description }, exception);
+            }
+            return result;
+        }
+
         /// <summary>
         /// Returns the Description of an Enum Value.
         /// </summary>

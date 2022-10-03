@@ -79,5 +79,27 @@ namespace goatgitter.lib.tests.extensions
                     It.IsAny<Exception>()), Times.Exactly(errorsExpected));
             Assert.AreEqual(expectedDesc, result);
         }
+
+        /// <summary>
+        /// Tests the GetValByDesc Method
+        /// </summary>
+        /// <param name="expectedVal"></param>
+        /// <param name="desc"></param>
+        /// <param name="errorsExpected"></param>
+        [Test]
+        [TestCase(TEST_ENUM_GRADE.None, NONE)]
+        [TestCase(TEST_ENUM_GRADE.A, BEST)]
+        [TestCase(new TEST_ENUM_GRADE(), NONE)]
+        [TestCase(TEST_ENUM_GRADE.B, "B")]
+        [TestCase(TEST_ENUM_GRADE.None, INVALID)]
+        public void GetValByDescTest<T>(T expectedVal, string desc, int errorsExpected = 0) where T : Enum
+        {
+            T result = Enums.GetValByDesc<T>(desc, MockAppLogger.Object);
+            MockAppLogger.Verify(m => m.LogExceptionWithData(
+                    It.Is<string>(s => s.Equals(ERR_ENUM_DESC)),
+                    It.Is<object[]>(o => o.Contains<object>(desc)),
+                    It.IsAny<Exception>()), Times.Exactly(errorsExpected));
+            Assert.AreEqual(expectedVal, result);
+        }
     }
 }

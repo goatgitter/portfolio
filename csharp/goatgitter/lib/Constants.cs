@@ -27,7 +27,8 @@
         // Constants for Extensions
         public const string NONE = "None";
         public const string BEST = "Best";
-        
+        public const string INVALID = "Invalid";
+
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }
 }

@@ -64,6 +64,15 @@
             Copyright (c) 2022 goatgitter
             
         </member>
+        <member name="M:goatgitter.lib.extensions.Enums.GetValByDesc``1(System.String,goatgitter.lib.tools.ILogger)">
+            <summary>
+            Finds the Enum Value for a given description.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="description"></param>
+            <param name="notepad"></param>
+            <returns>The Enum Value with the given description, if found, otherwise the default Enum value.</returns>
+        </member>
         <member name="M:goatgitter.lib.extensions.Enums.GetDesc(System.Enum,goatgitter.lib.tools.ILogger)">
             <summary>
             Returns the Description of an Enum Value.
@@ -283,6 +292,14 @@
             </summary>
             <param name="val"></param>
             <param name="expectedDesc"></param>
+            <param name="errorsExpected"></param>
+        </member>
+        <member name="M:goatgitter.lib.tests.extensions.EnumsTest.GetValByDescTest``1(``0,System.String,System.Int32)">
+            <summary>
+            Tests the GetValByDesc Method
+            </summary>
+            <param name="expectedVal"></param>
+            <param name="desc"></param>
             <param name="errorsExpected"></param>
         </member>
         <member name="T:goatgitter.lib.tests.extensions.ExceptionsTest">
